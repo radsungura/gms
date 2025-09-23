@@ -4,6 +4,7 @@ import { Dashboard } from './features/dashboard/dashboard';
 import { Login } from './features/login/login';
 import { Documents } from './features/documents/documents';
 import { Users } from './features/users/users';
+import { Archive } from './features/archive/archive';
 
 export const routes: Routes = [
   {
@@ -15,6 +16,7 @@ export const routes: Routes = [
         
         { path: 'dashboard', component: Dashboard },
         { path: 'documents', component: Documents },
+        { path: 'archive', component: Archive },
         { path: 'users', component: Users }
     ],
   },
