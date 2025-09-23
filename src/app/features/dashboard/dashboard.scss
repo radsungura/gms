@@ -1,0 +1,61 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.stats-grid mat-card {
+  text-align: center;
+  padding: 16px;
+}
+
+.stats-grid mat-icon {
+  // font-size: 36px;
+  color: #00488f;
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.activity {
+  padding: 16px;
+}
+
+.all{
+  background: #00bcd3;
+  color: #000000;
+      font-size: large;
+    font-weight: 500;
+}
+.actif{
+  background: #01991db5;
+  color: aliceblue;
+      font-size: large;
+    font-weight: 500;
+}
+.archive{
+  background: #f0c151;
+  color: #000000;
+      font-size: large;
+    font-weight: 500;
+}
+.user{
+  background: #ff6384;
+  color: aliceblue;
+      font-size: large;
+    font-weight: 500;
+}
+.chart{
+  box-shadow: #000000 3px 3px 20px -2px;
+  text-align: center;
+}
+
