@@ -5,6 +5,8 @@ import { Login } from './features/login/login';
 import { Documents } from './features/documents/documents';
 import { Users } from './features/users/users';
 import { Archive } from './features/archive/archive';
+import { Borrow } from './features/borrow/borrow';
+import { Search } from './features/search/search';
 
 export const routes: Routes = [
   {
@@ -13,9 +15,10 @@ export const routes: Routes = [
     
     children: [
         { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-        
         { path: 'dashboard', component: Dashboard },
         { path: 'documents', component: Documents },
+        { path: 'search', component: Search },
+        { path: 'borrow', component: Borrow },
         { path: 'archive', component: Archive },
         { path: 'users', component: Users }
     ],

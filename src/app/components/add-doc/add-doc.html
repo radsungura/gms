@@ -1,1 +1,66 @@
-<p>add-doc works!</p>
+<!-- <h2 mat-dialog-title>
+  {{ data.mode === 'add' ? 'Ajouter un Document' : 'Modifier le Document' }}
+</h2>
+
+<mat-dialog-content>
+  <form #docForm="ngForm">
+    <mat-form-field class="full-width">
+      <mat-label>Titre</mat-label>
+      <input matInput [(ngModel)]="formData.title" name="title" required />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Statut</mat-label>
+      <mat-select [(ngModel)]="formData.status" name="status" required>
+        <mat-option value="en cours">En cours</mat-option>
+        <mat-option value="archivé">Archivé</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Propriétaire</mat-label>
+      <input matInput [(ngModel)]="formData.owner" name="owner" required />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Annuler</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="formData">
+    {{ data.mode === 'add' ? 'Ajouter' : 'Mettre à jour' }}
+  </button>
+</mat-dialog-actions> -->
+
+<div class="container" >
+    <h2 mat-dialog-title>
+    {{ data.mode === 'add' ? 'Ajouter un Document' : 'Modifier le Document' }}
+    </h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Titre</mat-label>
+        <input matInput formControlName="titre" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Catégorie</mat-label>
+        <input matInput formControlName="categorie" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Localisation</mat-label>
+        <input matInput formControlName="localisation" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Statut</mat-label>
+        <input matInput formControlName="statut" />
+      </mat-form-field>
+
+      <div class="flex justify-end mt-4" align="end">
+        <button mat-button (click)="dialogRef.close()">Annuler</button>
+        <button mat-raised-button color="primary" type="submit">Enregistrer</button>
+      </div>
+    </form>
+</div>
+    
+

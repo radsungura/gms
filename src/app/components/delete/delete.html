@@ -1,0 +1,14 @@
+<!-- <h2 mat-dialog-title>
+    Supprimer {{ data.mode }}
+</h2> -->
+
+<div class="container" >
+    <h2 mat-dialog-title>
+    <!-- {{ data.mode === 'add' ? 'Ajouter un Document' : 'Modifier le Document' }} -->
+       Suppression du {{ data.mode }}
+    </h2>
+    <div class="flex justify-end mt-4" align="end">
+        <button mat-button (click)="dialogRef.close()">Annuler</button>
+        <button mat-raised-button color="primary" type="submit">Continuer</button>
+      </div>
+</div>

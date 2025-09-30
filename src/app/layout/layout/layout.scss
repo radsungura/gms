@@ -104,3 +104,9 @@ mat-toolbar {
 mat-icon[color="warn"] {
   font-size: 12px;
 }
+
+mat-nav-list mat-icon{
+      top: 20px;
+    position: sticky;
+    margin-right: 10px;
+}

@@ -6,7 +6,7 @@
   <mat-sidenav #drawer mode="side" [(opened)]="drawerOpened" class="sidenav">
     <!-- Sidebar identique -->
     <div class="sidebar-logo">
-       <h3>📂 L M S</h3>
+      <h3>📂 L M S</h3>
     </div>
     <mat-nav-list>
       <a mat-list-item routerLink="/dashboard" routerLinkActive="active">
@@ -17,6 +17,16 @@
       <a mat-list-item routerLink="/documents" routerLinkActive="active">
         <mat-icon>description</mat-icon>
         <span>Documents</span>
+      </a>
+
+      <a mat-list-item routerLink="/search" routerLinkActive="active">
+        <mat-icon>search</mat-icon>
+        <span>Recherche</span>
+      </a>
+
+      <a mat-list-item routerLink="/borrow" routerLinkActive="active">
+        <mat-icon>book</mat-icon>
+        <span>Emprunt</span>
       </a>
 
       <a mat-list-item routerLink="/archive" routerLinkActive="active">
