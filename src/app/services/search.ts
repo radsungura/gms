@@ -10,7 +10,7 @@ export interface Document {
 }
 
 const DATA: Document[] = [
-  {id: 1, titre: 'Contrat X', categorie: 'Juridique', localisation: 'Armoire A1', statut: 'Disponible'},
+  {id: 1, titre: 'Contrat de soumission', categorie: 'Juridique', localisation: 'Armoire A1', statut: 'Disponible'},
   {id: 2, titre: 'Facture 2023', categorie: 'Finance', localisation: 'Armoire B2', statut: 'Emprunté'},
   {id: 3, titre: 'Rapport RH', categorie: 'Ressources', localisation: 'Armoire C1', statut: 'Disponible'}
 ];
