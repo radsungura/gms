@@ -69,7 +69,7 @@ export class Search {
         const results = await firstValueFrom(this.data.search(this.query));
         this.documents = results;
       } catch (error) {
-        console.error('Erreur lors de la recherche', error);
+        console.error('Erreur', error);
       } finally {
         this.isLoading = false;
         this.results = [];
