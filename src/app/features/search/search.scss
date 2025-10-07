@@ -30,6 +30,14 @@ h2 {
   top: 107px;
   position: absolute;
   margin-left: 14px;
+  cursor: pointer;
+}
+.reset-btn{
+  top: 107px;
+  position: absolute;
+  margin-left: -37px;
+  cursor: pointer;
+  font-size:medium;
 }
 .loading-spinner {
   text-align: center;

@@ -58,11 +58,15 @@ export class Search {
       this.getDoc()
     }
   }
-
+  // reset search
+  reset(){
+    this.query = "";
+    this.searchdoc = "";
+  }
   // Fonction de recherche avance
   async search(query: string) {
     console.log('item', query);
-    this.query = query;
+    this.query = query? query: "";
     if (this.query.trim() !== '') {
        this.isLoading = true;
       try {

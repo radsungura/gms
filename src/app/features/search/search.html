@@ -2,10 +2,15 @@
     <!-- <div style="width: 20%;">
         <h3>Recherche </h3>
     </div> -->
-    <div class="search-bar" (click)="search(searchdoc)">
+    <div class="search-bar">
         <input type="text" [(ngModel)]="searchdoc" (input)="autocomplete(searchdoc)" placeholder="Nom dudocument..." class="search-input" />
-        <span class="search-btn" mat-raised-button type="submit" >
-            <mat-icon>search</mat-icon>
+        <span *ngIf="query" class="reset-btn" (click)="reset()" mat-raised-button type="submit" >
+            <!-- <mat-icon>close</mat-icon> -->
+            ❌
+        </span>
+        <span class="search-btn" mat-raised-button type="submit" (click)="search(searchdoc)">
+            <!-- <mat-icon>search</mat-icon> -->
+             🔍
         </span>
     </div>
 </mat-toolbar>
