@@ -1,7 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { EditDoc } from '../edit-doc/edit-doc';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -16,7 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 export class Delete {
 form: any;
 constructor(private fb: FormBuilder,
-    public dialogRef: MatDialogRef<EditDoc>,
+    public dialogRef: MatDialogRef<Delete>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ){
   // if (data.mode === 'edit' && data.document) {

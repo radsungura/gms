@@ -7,7 +7,6 @@ import { MatDialogModule, MatDialog   } from '@angular/material/dialog';
 import { DetailsDoc } from '../../components/details-doc/details-doc';
 import { AddDoc } from '../../components/add-doc/add-doc';
 import { Delete } from '../../components/delete/delete';
-import { EditDoc } from '../../components/edit-doc/edit-doc';
 import { Document } from '../../services/document';
 import { Doc } from "../../../models/interfaces";
 
@@ -65,7 +64,7 @@ export class Documents {
   editDocument(doc: any) {
     console.log('✏️ Modifier le document :', doc);
     // Naviguer vers un formulaire ou afficher une modale
-    const dialogRef = this.dialog.open(EditDoc, {
+    const dialogRef = this.dialog.open(AddDoc, {
         width: '90vw', // ou '80vw' pour responsive
         maxHeight: '1000vh',
         data: { mode: 'edit' }

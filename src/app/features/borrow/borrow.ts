@@ -9,7 +9,6 @@ import { Borrows } from "../../services/borrow";
 import { Mov } from "../../../models/interfaces";
 import { DetailsBorrow } from '../../components/details-borrow/details-borrow';
 import { AddBorrow } from '../../components/add-borrow/add-borrow';
-import { EditBorrow } from '../../components/edit-borrow/edit-borrow';
 
 
 @Component({
@@ -66,7 +65,7 @@ export class Borrow {
 edit(mov: any) {
   console.log('✏️ Modifier le movument :', mov);
   // Naviguer vers un formulaire ou afficher une modale
-  const dialogRef = this.dialog.open(EditBorrow, {
+  const dialogRef = this.dialog.open(AddBorrow, {
       width: '90vw', // ou '80vw' pour responsive
       maxHeight: '1000vh',
       data: { mode: 'edit' }

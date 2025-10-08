@@ -8,7 +8,6 @@ import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { DetailsUser } from '../../components/details-user/details-user';
 import { AddUser } from '../../components/add-user/add-user';
 import { Delete } from '../../components/delete/delete';
-import { EditUser } from '../../components/edit-user/edit-user';
 import { User } from '../../../models/interfaces';
 import { UserService } from '../../services/user'
 @Component({
@@ -63,7 +62,7 @@ displayedColumns: string[] = ['id', 'name', 'email', 'role', 'statut', 'actions'
 edit(user: any) {
   console.log('✏️ Modifier le user :', user);
   // Naviguer vers un formulaire ou afficher une modale
-  const dialogRef = this.dialog.open(EditUser, {
+  const dialogRef = this.dialog.open(AddUser, {
       width: '90vw', // ou '80vw' pour responsive
       maxHeight: '1000vh',
       data: { mode: 'edit' }
