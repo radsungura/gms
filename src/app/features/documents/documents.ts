@@ -8,20 +8,8 @@ import { DetailsDoc } from '../../components/details-doc/details-doc';
 import { AddDoc } from '../../components/add-doc/add-doc';
 import { Delete } from '../../components/delete/delete';
 import { EditDoc } from '../../components/edit-doc/edit-doc';
-
-export interface Document {
-  id: number;
-  titre: string;
-  categorie: string;
-  localisation: string;
-  statut: string;
-}
-
-const DOCUMENTS_DATA: Document[] = [
-  {id: 1, titre: 'Contrat X', categorie: 'Juridique', localisation: 'Armoire A1', statut: 'Disponible'},
-  {id: 2, titre: 'Facture 2023', categorie: 'Finance', localisation: 'Armoire B2', statut: 'Emprunté'},
-  {id: 3, titre: 'Rapport RH', categorie: 'Ressources', localisation: 'Armoire C1', statut: 'Disponible'}
-];
+import { Document } from '../../services/document';
+import { Doc } from "../../../models/interfaces";
 
 @Component({
   selector: 'app-documents',
@@ -31,10 +19,16 @@ const DOCUMENTS_DATA: Document[] = [
 })
 
 export class Documents {
-displayedColumns: string[] = ['id', 'titre', 'categorie', 'localisation', 'statut', 'actions'];
-  documents = DOCUMENTS_DATA;
-  constructor(private dialog: MatDialog){
+  documents: Doc[] = [];
+  displayedColumns: string[] = ['id', 'titre', 'categorie', 'localisation', 'status', 'actions'];
+  constructor(private dialog: MatDialog, private data: Document){
 
+  }
+  ngOnInit() {
+    this.loadDocs();
+  }
+  loadDocs() {
+    this.data.getAll().subscribe((docs) => (this.documents = docs));
   }
 
   addDoc(){
@@ -53,51 +47,51 @@ displayedColumns: string[] = ['id', 'titre', 'categorie', 'localisation', 'statu
   }
 
   viewDetails(doc: any) {
-  console.log('📄 Détails du document :', doc);
-  // Naviguer vers une page ou ouvrir une modale
-   const dialogRef = this.dialog.open(DetailsDoc, {
-      width: '90vw', // ou '80vw' pour responsive
-      maxHeight: '1000vh',
-      data: { mode: 'details', item: doc }
-    });
+    console.log('📄 Détails du document :', doc);
+    // Naviguer vers une page ou ouvrir une modale
+    const dialogRef = this.dialog.open(DetailsDoc, {
+        width: '90vw', // ou '80vw' pour responsive
+        maxHeight: '1000vh',
+        data: { mode: 'details', item: doc }
+      });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        // this.documentsService.addDocument(result).subscribe(() => this.loadDocuments());
-      }
-    });
-}
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          // this.documentsService.addDocument(result).subscribe(() => this.loadDocuments());
+        }
+      });
+  }
 
-editDocument(doc: any) {
-  console.log('✏️ Modifier le document :', doc);
-  // Naviguer vers un formulaire ou afficher une modale
-  const dialogRef = this.dialog.open(EditDoc, {
-      width: '90vw', // ou '80vw' pour responsive
-      maxHeight: '1000vh',
-      data: { mode: 'edit' }
-    });
+  editDocument(doc: any) {
+    console.log('✏️ Modifier le document :', doc);
+    // Naviguer vers un formulaire ou afficher une modale
+    const dialogRef = this.dialog.open(EditDoc, {
+        width: '90vw', // ou '80vw' pour responsive
+        maxHeight: '1000vh',
+        data: { mode: 'edit' }
+      });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        // this.documentsService.addDocument(result).subscribe(() => this.loadDocuments());
-      }
-    });
-}
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          // this.documentsService.addDocument(result).subscribe(() => this.loadDocuments());
+        }
+      });
+  }
 
-deleteDocument(doc: any) {
-  console.log('🗑️ Supprimer le document :', doc);
-  // Confirmer et supprimer via API ou service
-  const dialogRef = this.dialog.open(Delete, {
-      width: '90vw', // ou '80vw' pour responsive
-      maxHeight: '1000vh',
-      data: { mode: 'document' }
-    });
+  deleteDocument(doc: any) {
+    console.log('🗑️ Supprimer le document :', doc);
+    // Confirmer et supprimer via API ou service
+    const dialogRef = this.dialog.open(Delete, {
+        width: '90vw', // ou '80vw' pour responsive
+        maxHeight: '1000vh',
+        data: { mode: 'document' }
+      });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        // this.documentsService.addDocument(result).subscribe(() => this.loadDocuments());
-      }
-    });
-}
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          // this.documentsService.addDocument(result).subscribe(() => this.loadDocuments());
+        }
+      });
+  }
 
 }

@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" style="justify-content: space-between;">Liste des Mouvements
-  <button mat-raised-button class="add-btn" color="accent" (click)="addDoc()">
+  <button mat-raised-button class="add-btn" color="accent" (click)="addMov()">
     <mat-icon>add</mat-icon> Ajouter
   </button>
 <!-- 
@@ -12,7 +12,7 @@
    
 
     <div class="p-4">
-  <table mat-table [dataSource]="mouvements" class="mat-elevation-z8 w-full">
+  <table mat-table [dataSource]="mov" class="mat-elevation-z8 w-full">
 
     <!-- ID -->
     <ng-container matColumnDef="id">
@@ -42,20 +42,20 @@
     <!-- Statut -->
     <ng-container matColumnDef="statut">
       <th mat-header-cell *matHeaderCellDef> Statut </th>
-      <td mat-cell *matCellDef="let element"> {{element.statut}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.status}} </td>
     </ng-container>
 
     <!-- Actions -->
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let element">
-        <button mat-icon-button color="primary" (click)="viewDetails(element)">
+        <button mat-icon-button color="primary" (click)="details(element)">
           <mat-icon>visibility</mat-icon>
         </button>
-        <button mat-icon-button color="accent" (click)="editDocument(element)">
+        <button mat-icon-button color="accent" (click)="edit(element)">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button color="warn" (click)="deleteDocument(element)">
+        <button mat-icon-button color="warn" (click)="delete(element)">
           <mat-icon>delete</mat-icon>
         </button>
       </td>

@@ -1,30 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-
-export interface Document {
-  id: number;
-  titre: string;
-  categorie: string;
-  localisation: string;
-  statut: string;
-}
-
-const DATA: Document[] = [
-  {id: 1, titre: 'Contrat de soumission', categorie: 'Juridique', localisation: 'Armoire A1', statut: 'Disponible'},
-  {id: 2, titre: 'Facture', categorie: 'Finance', localisation: 'Armoire B2', statut: 'Emprunté'},
-  {id: 3, titre: 'Rapport RH', categorie: 'Ressources', localisation: 'Armoire C1', statut: 'Disponible'}
-];
+import { HttpClient } from '@angular/common/http';
+import { Doc } from '../../models/interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class SearchService {
-  documents = DATA;
+  private api = 'http://localhost:4000/documents';
+  documents: Doc[] = [];
+  data: any;
+  constructor(private http: HttpClient){
+    this.data = this.load();
+    console.log("searchdata", this.data);
+    
+  }
+  load(): Observable<Doc[]>{
+    return  this.http.get<Doc[]>(this.api);
+  }
   search(query: string): Observable<any[]> {
     // Simuler un filtrage basé sur le nom du médicament
-    const results = this.documents.filter(doc => doc.titre.toLowerCase().includes(query.toLowerCase()));
-    console.log('servicedata', results);
+    const results = this.documents.filter(doc => doc.title.toLowerCase().includes(query.toLowerCase()));
+    console.log('servicedata', this.http.get<Doc[]>(this.api));
     
     return of(results); // Retourner un Observable
   }
