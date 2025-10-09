@@ -2,22 +2,28 @@
   <!-- Stat cards -->
   <div class="stats-grid">
     <mat-card class="all">
-      <mat-icon>folder</mat-icon>
+      <!-- <mat-icon>folder</mat-icon> -->
+      <span class="icon folder">📄</span>
+      
       <h2>{{ stats.total }}</h2>
       <p>Total Documents</p>
     </mat-card>
     <mat-card class="actif">
-      <mat-icon>check_circle</mat-icon>
+      <span class="icon folder">✅</span>
+    
+      <!-- <mat-icon>check_circle</mat-icon> -->
       <h2>{{ stats.actifs }}</h2>
       <p>Actifs</p>
     </mat-card>
     <mat-card class="archive">
-      <mat-icon>archive</mat-icon>
+      <!-- <mat-icon>archive</mat-icon> -->
+      <span class="icon folder">⬆️</span>
       <h2>{{ stats.archives }}</h2>
       <p>Empruntés</p>
     </mat-card>
     <mat-card class="user">
-      <mat-icon>timer</mat-icon>
+      <span class="icon folder">🗃️</span>
+      <!-- <mat-icon>timer</mat-icon> -->
       <h2>{{ stats.users }}</h2>
       <p>Archivés</p>
     </mat-card>
@@ -26,7 +32,7 @@
   <!-- Graphs -->
   <div class="charts-grid">
     <mat-card class="chart">
-      <h3>Évolution des ajouts</h3>
+      <h3>Évolution </h3>
       <canvas baseChart [data]="lineChartData" [options]="lineChartOptions" chartType="line"></canvas>
     </mat-card>
 
@@ -38,7 +44,7 @@
 
   <!-- Activity -->
   <mat-card class="activity">
-    <h3>Activité récente</h3>
+    <h3>Activité</h3>
     <mat-list>
       <mat-list-item *ngFor="let act of recentActivity">
         <mat-icon matListIcon>{{ act.icon }}</mat-icon>

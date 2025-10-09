@@ -9,17 +9,19 @@ import { AddDoc } from '../../components/add-doc/add-doc';
 import { Delete } from '../../components/delete/delete';
 import { Document } from '../../services/document';
 import { Doc } from "../../../models/interfaces";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-documents',
-  imports: [MatTableModule, MatToolbarModule, MatIconModule, MatButtonModule, MatDialogModule],
+  imports: [MatTableModule, MatToolbarModule, MatIconModule, MatButtonModule, MatDialogModule, CommonModule],
   templateUrl: './documents.html',
   styleUrl: './documents.scss'
 })
 
 export class Documents {
   documents: Doc[] = [];
-  displayedColumns: string[] = ['id', 'titre', 'categorie', 'localisation', 'status', 'actions'];
+  view: string =''
+  displayedColumns: string[] = ['id', 'title', 'category', 'location', 'status', 'actions'];
   constructor(private dialog: MatDialog, private data: Document){
 
   }

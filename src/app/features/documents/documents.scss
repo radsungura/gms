@@ -9,3 +9,28 @@ table { width: 100%; margin-top: 20px;
   background-color: #1976d2;
   color: white;
 }
+.folder{
+  display: grid;
+  // width: 50px;
+  height: 50px;
+  margin-top: 20px;
+  // top: 200px;
+  // position: absolute;
+}
+.folder-icon{
+  font-size: 70px;
+}
+.folder-box{
+  background: #e3e2e6;
+    padding: 20px;
+    height: 500px;
+    display: flex;
+    // justify-content: space-between;
+    label{
+      text-align: center;
+    }
+}
+.view{
+  right: 180px;
+    position: absolute;
+}

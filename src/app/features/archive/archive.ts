@@ -20,7 +20,7 @@ import { Document } from '../../../app/services/document';
 export class Archive {
 
  documents: Doc[] = [];
-  displayedColumns: string[] = ['id', 'title', 'categorie', 'localisation', 'status', 'actions'];
+  displayedColumns: string[] = ['id', 'title', 'category', 'location', 'status', 'actions'];
   constructor(private dialog: MatDialog, private data: Document){
 
   }

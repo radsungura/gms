@@ -25,10 +25,13 @@ export class Dashboard {
   };
 
   lineChartData: ChartConfiguration<'line'>['data'] = {
-    labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'],
-    datasets: [{ data: [5, 8, 12, 20, 15, 25], label: 'Docs ajoutés' }]
+    labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juillet', 'Aout', 'Sept', 'Oct', 'Nov', 'Dec'],
+    datasets: [
+      { data: [5, 8, 12, 20, 15, 25], label: 'Documents Ajoutés' }, 
+      { data: [12, 3, 5, 1, 0, 8], label: 'Documents Archivé' }
+    ]
   };
-  lineChartOptions: ChartConfiguration<'line'>['options'] = { responsive: true };
+  lineChartOptions: ChartConfiguration<'line'>['options'] = { responsive: false };
 
   pieChartData: ChartConfiguration<'pie'>['data'] = {
     labels: ['Contrats', 'Factures', 'Rapports', 'Autres'],
