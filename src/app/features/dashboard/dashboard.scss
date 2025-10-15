@@ -22,8 +22,8 @@
 }
 
 .charts-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  // grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
 
@@ -32,26 +32,26 @@
 }
 
 .all{
-  background: #008a9b;
+  background: #00bcd4;
   color: #000000;
       font-size: large;
     font-weight: 500;
     
 }
 .actif{
-  background: seagreen;
+  background: #188038;
   color: aliceblue;
       font-size: large;
     font-weight: 500;
 }
 .archive{
-  background: #c79d39;
+  background: #FFC107;
   color: #000000;
       font-size: large;
     font-weight: 500;
 }
 .user{
-  background: #93000a;
+  background: #f52020;
   color: aliceblue;
       font-size: large;
     font-weight: 500;
@@ -60,6 +60,7 @@
   box-shadow: #000000 0px 0px 20px -13px;
   text-align: center;
   padding: 20px;
+  width: -webkit-fill-available;
 }
 .icon{
   top: 20px;
