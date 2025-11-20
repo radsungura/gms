@@ -12,12 +12,16 @@ export class SearchService {
   documents: Doc[] = [];
   data: any;
   constructor(private http: HttpClient){
-    this.data = this.load();
-    console.log("searchdata", this.data);
+    this.load().subscribe((el) => this.data = el);
+    console.log("searchservicedata", this.data);
     
   }
   load(): Observable<Doc[]>{
-    return  this.http.get<Doc[]>(this.api);
+    let data = this.http.get<Doc[]>(this.api);
+    
+    console.log("after load :",  data);
+    return  data;
+    
   }
   search(query: string): Observable<any[]> {
     // Simuler un filtrage basé sur le nom du médicament

@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { SearchService } from '../../services/search';
 import { firstValueFrom } from 'rxjs';
+import { Doc } from "../../../models/interfaces";
 
 @Component({
   selector: 'app-search',
@@ -21,12 +22,15 @@ import { firstValueFrom } from 'rxjs';
 export class Search {
   results: any;
   query: string = ''; // Valeur saisie dans le champ de recherche
-  documents: any;  // Liste des médicaments retournée par la recherche
+  documents: Doc[] = [];  // Liste des médicaments retournée par la recherche
   isLoading: boolean = false; // Pour gérer l'état de chargement
   searchdoc: any;
 
   constructor(private data: SearchService, private dialog: MatDialog, public route: Router) {
-    this.documents = data.get_doc();
+    data.load().subscribe((docs) => (this.documents = docs));
+    console.log("search", this.documents);
+
+    // this.documents = data.get_doc();
     if (this.documents) {
       this.isLoading = true;
     } else {
@@ -79,7 +83,6 @@ export class Search {
         this.results = [];
         this.query = '';
       }
-
     } else {
       this.results = [];
     }
