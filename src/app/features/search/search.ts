@@ -26,8 +26,8 @@ export class Search {
   isLoading: boolean = false; // Pour gérer l'état de chargement
   searchdoc: any;
 
-  constructor(private data: SearchService, private dialog: MatDialog, public route: Router) {
-    data.load().subscribe((docs) => (this.documents = docs));
+  constructor(private serv: SearchService, private dialog: MatDialog, public route: Router) {
+    // serv.load().subscribe((docs: any) => (this.documents = docs));
     console.log("search", this.documents);
 
     // this.documents = data.get_doc();
@@ -39,7 +39,7 @@ export class Search {
   }
 
   getDoc(){
-    this.documents = this.data.get_doc();
+    this.documents = this.serv.get_doc();
   }
   // Fonction de recherche rapide 
   autocomplete(query: string) {
@@ -47,7 +47,7 @@ export class Search {
     this.query = query? query: '';
     if (query.trim() !== '' && this.query.length > 2) {
       this.isLoading = true;
-      this.data.search(this.query).subscribe(
+      this.serv.search(this.query).subscribe(
         (results: any) => {
           this.results = results;
           this.isLoading = false;
@@ -74,7 +74,7 @@ export class Search {
     if (this.query.trim() !== '') {
        this.isLoading = true;
       try {
-        const results = await firstValueFrom(this.data.search(this.query));
+        const results = await firstValueFrom(this.serv.search(this.query));
         this.documents = results;
       } catch (error) {
         console.error('Erreur', error);
