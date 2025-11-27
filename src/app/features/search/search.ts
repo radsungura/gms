@@ -27,10 +27,7 @@ export class Search {
   searchdoc: any;
 
   constructor(private serv: SearchService, private dialog: MatDialog, public route: Router) {
-    // serv.load().subscribe((docs: any) => (this.documents = docs));
-    console.log("search", this.documents);
-
-    // this.documents = data.get_doc();
+    this.getDoc();
     if (this.documents) {
       this.isLoading = true;
     } else {
@@ -39,17 +36,17 @@ export class Search {
   }
 
   getDoc(){
-    this.documents = this.serv.get_doc();
+    this.serv.get_doc().subscribe( el => { this.documents = el } );
   }
   // Fonction de recherche rapide 
   autocomplete(query: string) {
-    console.log('item', query);
     this.query = query? query: '';
     if (query.trim() !== '' && this.query.length > 2) {
       this.isLoading = true;
       this.serv.search(this.query).subscribe(
         (results: any) => {
           this.results = results;
+          
           this.isLoading = false;
         },
         (error: any) => {
@@ -69,7 +66,6 @@ export class Search {
   }
   // Fonction de recherche avance
   async search(query: string) {
-    console.log('item', query);
     this.query = query? query: "";
     if (this.query.trim() !== '') {
        this.isLoading = true;
@@ -89,7 +85,6 @@ export class Search {
   }
 
   details(doc: any) {
-    console.log('📄 Détails du document :', doc);
     // Naviguer vers une page ou ouvrir une modale
     const dialogRef = this.dialog.open(DetailsDoc, {
       width: '90vw', // ou '80vw' pour responsive

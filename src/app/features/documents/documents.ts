@@ -48,7 +48,6 @@ export class Documents {
   }
 
   viewDetails(doc: any) {
-    console.log('📄 Détails du document :', doc);
     // Naviguer vers une page ou ouvrir une modale
     const dialogRef = this.dialog.open(DetailsDoc, {
         width: '90vw', // ou '80vw' pour responsive
@@ -64,7 +63,6 @@ export class Documents {
   }
 
   editDocument(doc: any) {
-    console.log('✏️ Modifier le document :', doc);
     // Naviguer vers un formulaire ou afficher une modale
     const dialogRef = this.dialog.open(AddDoc, {
         width: '90vw', // ou '80vw' pour responsive
@@ -80,7 +78,6 @@ export class Documents {
   }
 
   deleteDocument(doc: any) {
-    console.log('🗑️ Supprimer le document :', doc);
     // Confirmer et supprimer via API ou service
     const dialogRef = this.dialog.open(Delete, {
         width: '90vw', // ou '80vw' pour responsive

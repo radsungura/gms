@@ -18,25 +18,25 @@ export class SearchService {
   constructor(private http: HttpClient){
 
     this.load();
-    console.log("searchservicedata", this.doc$.source._value);
-    
+    this.documents = this.source.value;
   }
+
+
   load(){
-    let data: any = [];
     this.http.get<Doc[]>(this.api).subscribe( el=> { this.source.next(el) });
-    data = this.source;
   }
 
 
   search(query: string): Observable<any[]> {
     // Simuler un filtrage basé sur le nom du médicament
-    const results = this.documents.filter(doc => doc.title.toLowerCase().includes(query.toLowerCase()));
-    console.log('servicedata', this.source.value);
+    const results = this.source.value.filter(doc => doc.title.toLowerCase().includes(query.toLowerCase()));
     
     return of(results); // Retourner un Observable
   }
-  get_doc(){
-    return this.documents;
-  }
 
+  get_doc(): Observable<any[]>{
+
+    return this.http.get<Doc[]>(this.api);
+   
+  }
 }
