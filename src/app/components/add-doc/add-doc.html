@@ -35,25 +35,25 @@
     <h2 mat-dialog-title>
     {{ data.mode === 'add' ? 'Ajouter un Document' : 'Modifier le Document' }}
     </h2>
-    <form *ngIf="data.mode === 'add'" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form *ngIf="data.mode === 'add'" [formGroup]="form" (ngSubmit)="addDoc(doc)">
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Titre</mat-label>
-        <input matInput formControlName="titre" />
+        <input [(ngModel)]="doc.title" matInput formControlName="titre" />
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Catégorie</mat-label>
-        <input matInput formControlName="categorie" />
+        <input [(ngModel)]="doc.cotegory" matInput formControlName="categorie" />
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>location</mat-label>
-        <input matInput formControlName="location" />
+        <input [(ngModel)]="doc.location" matInput formControlName="location" />
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Statut</mat-label>
-        <input matInput formControlName="statut" />
+        <input [(ngModel)]="doc.status" matInput formControlName="statut" />
       </mat-form-field>
 
       <div class="flex justify-end mt-4" align="end">

@@ -5,6 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { Doc } from '../../../models/interfaces';
 
 @Component({
   selector: 'app-add-doc',
@@ -29,8 +30,17 @@ constructor(private fb: FormBuilder,
     statut: [this.data.statut]
   });
 }
-onSubmit() {
+onSubmit(item: Doc) {
     if (this.form.valid) {
+      console.log("add items", item);
+      
+      this.dialogRef.close(this.form.value); // renvoie les données modifiées
+    }
+  }
+
+  addDoc(item: Doc) {
+    if (this.form.valid) {
+      console.log("add items", item);
       this.dialogRef.close(this.form.value); // renvoie les données modifiées
     }
   }
