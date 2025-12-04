@@ -32,7 +32,7 @@ export class Documents {
     this.data.getAll().subscribe((docs) => (this.documents = docs));
   }
 
-  addDoc(){
+  addDoc(){    
     const dialogRef = this.dialog.open(AddDoc, {
       width: '90vw', // ou '80vw' pour responsive
       maxHeight: '1000vh',

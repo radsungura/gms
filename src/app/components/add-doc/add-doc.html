@@ -35,10 +35,10 @@
     <h2 mat-dialog-title>
     {{ data.mode === 'add' ? 'Ajouter un Document' : 'Modifier le Document' }}
     </h2>
-    <form *ngIf="data.mode === 'add'" [formGroup]="form" (ngSubmit)="addDoc(doc)">
+    <form *ngIf="data.mode === 'add'" [formGroup]="form" (ngSubmit)="add(doc)">
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Titre</mat-label>
-        <input [(ngModel)]="doc.title" matInput formControlName="titre" />
+        <input [(ngModel)]="doc.title" matInput formControlName="title" />
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">
@@ -61,10 +61,10 @@
         <button mat-raised-button color="primary" type="submit">Enregistrer</button>
       </div>
     </form>
-    <form *ngIf="data.mode === 'edit'" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form *ngIf="data.mode === 'edit'" [formGroup]="form" (ngSubmit)="edit(doc)">
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Titre</mat-label>
-        <input matInput formControlName="titre" />
+        <input matInput formControlName="title" />
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">

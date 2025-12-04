@@ -14,23 +14,27 @@ import { Doc } from '../../../models/interfaces';
   styleUrl: './add-doc.scss'
 })
 export class AddDoc {
-form: any;
-constructor(private fb: FormBuilder,
-    public dialogRef: MatDialogRef<AddDoc>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ){
-  // if (data.mode === 'edit' && data.document) {
-  //     this.formData = { ...data.document };
-  //   }
+  form: any;
+  doc: any;
+  constructor(private fb: FormBuilder,
+      public dialogRef: MatDialogRef<AddDoc>,
+      @Inject(MAT_DIALOG_DATA) public data: any
+    ){
+    // if (data.mode === 'edit' && data.document) {
+    //     this.formData = { ...data.document };
+    //   }
 
-  this.form = this.fb.group({
-    titre: [this.data.titre, Validators.required],
-    categorie: [this.data.categorie],
-    localisation: [this.data.localisation],
-    statut: [this.data.statut]
-  });
-}
-onSubmit(item: Doc) {
+    this.form = this.fb.group({
+      title: [this.data.title, Validators.required],
+      categorie: [this.data.categorie],
+      location: [this.data.location],
+      statut: [this.data.statut]
+    });
+
+    this.doc = {};
+  }
+
+  edit(item: Doc) {
     if (this.form.valid) {
       console.log("add items", item);
       
@@ -38,7 +42,7 @@ onSubmit(item: Doc) {
     }
   }
 
-  addDoc(item: Doc) {
+  add(item: Doc) {
     if (this.form.valid) {
       console.log("add items", item);
       this.dialogRef.close(this.form.value); // renvoie les données modifiées
