@@ -16,13 +16,14 @@ import { Doc } from '../../../models/interfaces';
 export class AddDoc {
   form: any;
   doc: any;
+  formData: any;
   constructor(private fb: FormBuilder,
       public dialogRef: MatDialogRef<AddDoc>,
       @Inject(MAT_DIALOG_DATA) public data: any
     ){
-    // if (data.mode === 'edit' && data.document) {
-    //     this.formData = { ...data.document };
-    //   }
+    if (data.mode === 'edit' && data.document) {
+        this.formData = { ...data.document };
+      }
 
     this.form = this.fb.group({
       title: [this.data.title, Validators.required],
