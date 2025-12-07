@@ -37,7 +37,7 @@ export class AddDoc {
 
   edit(item: Doc) {
     if (this.form.valid) {
-      console.log("add items", item);
+      console.log("edit items", item);
       
       this.dialogRef.close(this.form.value); // renvoie les données modifiées
     }
