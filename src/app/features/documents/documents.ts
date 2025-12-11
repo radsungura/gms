@@ -29,30 +29,29 @@ export class Documents {
     this.loadDocs();
   }
   loadDocs() {
-    this.data.getAll().subscribe((docs) => (this.documents = docs));
+    this.data.getAll().subscribe((docs) => (this.documents = docs.reverse()));
   }
 
-  addDoc(){    
+  add(){    
     const dialogRef = this.dialog.open(AddDoc, {
       width: '90vw', // ou '80vw' pour responsive
       maxHeight: '1000vh',
-
-      data: { mode: 'add' }
+      data: { action: 'add' }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // this.documentsService.addDocument(result).subscribe(() => this.loadDocuments());
+        console.log("item added", result);
       }
     });
   }
 
-  viewDetails(doc: any) {
+  details(doc: any) {
     // Naviguer vers une page ou ouvrir une modale
     const dialogRef = this.dialog.open(DetailsDoc, {
         width: '90vw', // ou '80vw' pour responsive
         maxHeight: '1000vh',
-        data: { mode: 'details', item: doc }
+        data: { action: 'details', item: doc }
       });
 
       dialogRef.afterClosed().subscribe(result => {
@@ -62,12 +61,12 @@ export class Documents {
       });
   }
 
-  editDocument(doc: any) {
+  edit(doc: any) {
     // Naviguer vers un formulaire ou afficher une modale
     const dialogRef = this.dialog.open(AddDoc, {
         width: '90vw', // ou '80vw' pour responsive
         maxHeight: '1000vh',
-        data: { mode: 'edit' }
+        data: { action: 'edit', data: doc }
       });
 
       dialogRef.afterClosed().subscribe(result => {
@@ -77,12 +76,12 @@ export class Documents {
       });
   }
 
-  deleteDocument(doc: any) {
+  delete(doc: any) {
     // Confirmer et supprimer via API ou service
     const dialogRef = this.dialog.open(Delete, {
         width: '90vw', // ou '80vw' pour responsive
         maxHeight: '1000vh',
-        data: { mode: 'document' }
+        data: { action: 'delete', data: doc }
       });
 
       dialogRef.afterClosed().subscribe(result => {

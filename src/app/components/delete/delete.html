@@ -1,15 +1,24 @@
-<!-- <h2 mat-dialog-title>
-    Supprimer {{ data.mode }}
-</h2> -->
-
 <div class="container" >
-    <h2 mat-dialog-title>
-    <!-- {{ data.mode === 'add' ? 'Ajouter un Document' : 'Modifier le Document' }} -->
-       Supprimer les Donnees 
-       <!-- {{ data.mode }} -->
-    </h2>
-    <div class="flex justify-end mt-4" align="end">
-        <button mat-button (click)="dialogRef.close()">Annuler</button>
-        <button mat-raised-button color="primary" type="submit">Continuer</button>
-      </div>
+    <form *ngIf="data.action === 'delete'" [formGroup]="form" (ngSubmit)="delete(doc)">
+
+        <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Titre</mat-label>
+            <input [(ngModel)]="doc.id" matInput formControlName="id" required/>
+        </mat-form-field>
+    
+        <!-- <h2 mat-dialog-title>
+            Supprimer {{ data.action }}
+        </h2> -->
+
+        <div class="container" >
+            <h2 mat-dialog-title>
+            Supprimer les Donnees 
+            de {{ data.action }}
+            </h2>
+            <div class="flex justify-end mt-4" align="end">
+                <button mat-button (click)="dialogRef.close()">Annuler</button>
+                <button mat-raised-button color="primary" type="submit">Continuer</button>
+            </div>
+        </div>
+    </form>
 </div>

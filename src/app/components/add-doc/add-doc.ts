@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { Doc } from '../../../models/interfaces';
+import { Document } from '../../services/document';
 
 @Component({
   selector: 'app-add-doc',
@@ -18,35 +19,37 @@ export class AddDoc {
   doc: any;
   formData: any;
   constructor(private fb: FormBuilder,
-      public dialogRef: MatDialogRef<AddDoc>,
-      @Inject(MAT_DIALOG_DATA) public data: any
-    ){
-    if (data.mode === 'edit' && data.document) {
-        this.formData = { ...data.document };
-      }
+    public dialogRef: MatDialogRef<AddDoc>,
+    @Inject(MAT_DIALOG_DATA) public data: any, public serv: Document){
+    if (data.action === 'edit' && data.data) {
+        this.formData = { ...data.data };
+    }
 
     this.form = this.fb.group({
       title: [this.data.title, Validators.required],
-      categorie: [this.data.categorie],
-      location: [this.data.location],
-      statut: [this.data.statut]
+      reference: [this.data.reference, Validators.required],
+      category: [this.data.category, Validators.required],
+      location: [this.data.location, Validators.required],
+      status: [this.data.status, Validators.required]
     });
-
+    
     this.doc = {};
+    this.doc = this.data.data? this.data.data: {};
+    console.log("edit item", this.data.data);
+    
   }
 
   edit(item: Doc) {
     if (this.form.valid) {
-      console.log("edit items", item);
-      
       this.dialogRef.close(this.form.value); // renvoie les données modifiées
     }
   }
 
-  add(item: Doc) {
+  add(item: Doc) {    
     if (this.form.valid) {
-      console.log("add items", item);
-      this.dialogRef.close(this.form.value); // renvoie les données modifiées
+      this.serv.create(item).subscribe((el: any) => {
+        this.dialogRef.close(el); // renvoie les données modifiées
+      })
     }
   }
 

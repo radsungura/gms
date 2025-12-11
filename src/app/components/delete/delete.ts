@@ -5,34 +5,32 @@ import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { Document } from '../../services/document';
+import { Doc } from '../../../models/interfaces';
 
 @Component({
   selector: 'app-delete',
-  imports: [CommonModule, MatDialogModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
+  imports: [CommonModule, MatDialogModule, ReactiveFormsModule, MatFormFieldModule, MatButtonModule],
   templateUrl: './delete.html',
   styleUrl: './delete.scss'
 })
 export class Delete {
 form: any;
+doc: any;
+
 constructor(private fb: FormBuilder,
     public dialogRef: MatDialogRef<Delete>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ){
-  // if (data.mode === 'edit' && data.document) {
-  //     this.formData = { ...data.document };
-  //   }
+    @Inject(MAT_DIALOG_DATA) public data: any, public serv: Document){
+console.log(data);
+      this.doc = data.data;
 
-  this.form = this.fb.group({
-    titre: [this.data.titre, Validators.required],
-    categorie: [this.data.categorie],
-    localisation: [this.data.localisation],
-    statut: [this.data.statut]
-  });
 }
-  onSubmit() {
-    if (this.form.valid) {
-      this.dialogRef.close(this.form.value); // renvoie les données modifiées
-    }
-  }
+delete(item: any) {
+  console.log("item", item);
+  
+  this.serv.delete(item.id).subscribe((el: any) => {
+      this.dialogRef.close(el); // renvoie les données modifiées
+  })
+}
 }
 

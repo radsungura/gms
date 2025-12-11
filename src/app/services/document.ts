@@ -15,7 +15,7 @@ export class Document {
     return this.http.get<Doc[]>(this.api);
   }
 
-  create(doc: Doc): Observable<Doc> {
+  create(doc: Doc): Observable<Doc> {    
     return this.http.post<Doc>(this.api, doc);
   }
 
