@@ -17,20 +17,22 @@ import { Doc } from '../../../models/interfaces';
 export class Delete {
 form: any;
 doc: any;
-
+servererror: boolean = false;
 constructor(private fb: FormBuilder,
     public dialogRef: MatDialogRef<Delete>,
     @Inject(MAT_DIALOG_DATA) public data: any, public serv: Document){
-console.log(data);
-      this.doc = data.data;
 
 }
-delete(item: any) {
-  console.log("item", item);
+ async delete() {
   
-  this.serv.delete(item.id).subscribe((el: any) => {
+  try {
+    await this.serv.delete(25).subscribe((el) => {
       this.dialogRef.close(el); // renvoie les données modifiées
-  })
+    });
+  } catch (error){
+    console.error("error", error);
+    this.servererror = true;
+  }
 }
 }
 

@@ -18,11 +18,14 @@ export class AddDoc {
   form: any;
   doc: any;
   formData: any;
+  servererror: boolean = false;
   constructor(private fb: FormBuilder,
     public dialogRef: MatDialogRef<AddDoc>,
     @Inject(MAT_DIALOG_DATA) public data: any, public serv: Document){
     if (data.action === 'edit' && data.data) {
-        this.formData = { ...data.data };
+        this.doc = { ...data.data };
+    }else{
+      this.doc = {};
     }
 
     this.form = this.fb.group({
@@ -41,7 +44,11 @@ export class AddDoc {
 
   edit(item: Doc) {
     if (this.form.valid) {
-      this.dialogRef.close(this.form.value); // renvoie les données modifiées
+      this.serv.update(item.id, item).subscribe((el: any) => {
+        this.dialogRef.close(el); // renvoie les données modifiées
+      })
+    }else{
+      this.servererror = true;
     }
   }
 
@@ -50,6 +57,8 @@ export class AddDoc {
       this.serv.create(item).subscribe((el: any) => {
         this.dialogRef.close(el); // renvoie les données modifiées
       })
+    }else{
+      this.servererror = true;
     }
   }
 

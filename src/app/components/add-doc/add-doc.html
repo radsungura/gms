@@ -1,8 +1,9 @@
 <div class="container" >
     <h2 mat-dialog-title>
-    {{ data.mode === 'add' ? 'Ajouter un Document' : 'Modifier le Document' }}
+    {{ data.action === 'add' ? 'Ajouter un Document' : 'Modifier le Document' }}
     </h2>
-    <form *ngIf="data.mode === 'add'" [formGroup]="form" (ngSubmit)="add(doc)">
+    <!-- <form [formGroup]="form" (ngSubmit)="data.mode === 'add'? add(doc): edit(doc)"> -->
+    <form [formGroup]="form">
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Titre</mat-label>
         <input [(ngModel)]="doc.title" matInput formControlName="title" required/>
@@ -30,9 +31,12 @@
 
       <div class="flex justify-end mt-4" align="end">
         <button mat-button (click)="dialogRef.close()">Annuler</button>
-        <button mat-raised-button color="primary" type="submit">{{ data.mode === 'add' ? 'Ajouter' : 'Mettre à jour' }}</button>
+        <button mat-raised-button color="btn-primary" (click)="data.action === 'add'? add(doc): edit(doc)">{{ data.action === 'add' ? 'Ajouter' : 'Mettre à jour' }}</button>
       </div>
     </form>
+    <div *ngIf="servererror">
+      <p style="color: red;">Une erreur est survenu !</p>
+    </div>
 </div>
     
 

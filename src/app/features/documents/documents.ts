@@ -41,7 +41,7 @@ export class Documents {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log("item added", result);
+        this.loadDocs();
       }
     });
   }
@@ -71,7 +71,7 @@ export class Documents {
 
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
-          // this.documentsService.addDocument(result).subscribe(() => this.loadDocuments());
+          this.loadDocs();
         }
       });
   }
@@ -86,7 +86,7 @@ export class Documents {
 
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
-          // this.documentsService.addDocument(result).subscribe(() => this.loadDocuments());
+          this.loadDocs()
         }
       });
   }
