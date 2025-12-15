@@ -31,66 +31,68 @@ export class Borrow {
   }
 
 
-   addMov(){
+  addMov(){
     const dialogRef = this.dialog.open(AddBorrow, {
       width: '90vw', // ou '80vw' pour responsive
       maxHeight: '1000vh',
 
-      data: { mode: 'add' }
+      data: { action: 'add' }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        this.loadMov();
         // this.movumentsService.addmovument(result).subscribe(() => this.loadmovuments());
       }
     });
   }
 
   details(mov: any) {
-  console.log('📄 Détails du movument :', mov);
-  // Naviguer vers une page ou ouvrir une modale
-   const dialogRef = this.dialog.open(DetailsBorrow, {
-      width: '90vw', // ou '80vw' pour responsive
-      maxHeight: '1000vh',
-      data: { mode: 'details', item: mov }
-    });
+    console.log('📄 Détails du movument :', mov);
+    // Naviguer vers une page ou ouvrir une modale
+    const dialogRef = this.dialog.open(DetailsBorrow, {
+        width: '90vw', // ou '80vw' pour responsive
+        maxHeight: '1000vh',
+        data: { mode: 'details', item: mov }
+      });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        // this.movumentsService.addmovument(result).subscribe(() => this.loadmovuments());
-      }
-    });
-}
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          // this.movumentsService.addmovument(result).subscribe(() => this.loadmovuments());
+        }
+      });
+  }
 
-edit(mov: any) {
-  console.log('✏️ Modifier le movument :', mov);
-  // Naviguer vers un formulaire ou afficher une modale
-  const dialogRef = this.dialog.open(AddBorrow, {
-      width: '90vw', // ou '80vw' pour responsive
-      maxHeight: '1000vh',
-      data: { mode: 'edit' }
-    });
+  edit(mov: any) {
+    console.log('✏️ Modifier le movument :', mov);
+    // Naviguer vers un formulaire ou afficher une modale
+    const dialogRef = this.dialog.open(AddBorrow, {
+        width: '90vw', // ou '80vw' pour responsive
+        maxHeight: '1000vh',
+        data: { action: 'edit', data: mov }
+      });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        // this.movumentsService.addmovument(result).subscribe(() => this.loadmovuments());
-      }
-    });
-}
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.loadMov();
+          // this.movumentsService.addmovument(result).subscribe(() => this.loadmovuments());
+        }
+      });
+  }
 
-delete(mov: any) {
-  console.log('🗑️ Supprimer le movument :', mov);
-  // Confirmer et supprimer via API ou service
-  const dialogRef = this.dialog.open(Delete, {
-      width: '90vw', // ou '80vw' pour responsive
-      maxHeight: '1000vh',
-      data: { mode: 'movument' }
-    });
+  delete(mov: any) {
+    console.log('🗑️ Supprimer le movument :', mov);
+    // Confirmer et supprimer via API ou service
+    const dialogRef = this.dialog.open(Delete, {
+        width: '90vw', // ou '80vw' pour responsive
+        maxHeight: '1000vh',
+        data: { mode: 'movument' }
+      });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        // this.movumentsService.addmovument(result).subscribe(() => this.loadmovuments());
-      }
-    });
-}
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          // this.movumentsService.addmovument(result).subscribe(() => this.loadmovuments());
+        }
+      });
+  }
 }
