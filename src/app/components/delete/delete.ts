@@ -5,8 +5,15 @@ import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { Document } from '../../services/document';
-import { Doc } from '../../../models/interfaces';
+import { Groups } from '../../services/groups';
+// import { Doc } from '../../../models/interfaces';
+import { Savings } from '../../services/savings';
+import { Refunds } from '../../services/refunds';
+import { Fines } from '../../services/fines';
+import { Members } from '../../services/members';
+import { EmFunds } from '../../services/em-funds';
+import { EmExpenses } from '../../services/em-expenses';
+import { Credits } from '../../services/credits';
 
 @Component({
   selector: 'app-delete',
@@ -17,21 +24,109 @@ import { Doc } from '../../../models/interfaces';
 export class Delete {
 form: any;
 doc: any;
+cat: any;
 servererror: boolean = false;
-constructor(private fb: FormBuilder,
-    public dialogRef: MatDialogRef<Delete>,
-    @Inject(MAT_DIALOG_DATA) public data: any, public serv: Document){
-
+constructor(
+  private fb: FormBuilder, 
+  public dialogRef: MatDialogRef<Delete>, 
+  @Inject(MAT_DIALOG_DATA) public data: any, 
+  public groups: Groups,
+  public savings: Savings,
+  public credits: Credits,
+  public refunds: Refunds,
+  public fines: Fines,
+  public members: Members,
+  public emfunds: EmFunds,
+  public emexpenses: EmExpenses
+){
+  console.log(data);
+  this.cat = data.cat;
 }
- async delete() {
-  
-  try {
-    await this.serv.delete(25).subscribe((el) => {
-      this.dialogRef.close(el); // renvoie les données modifiées
-    });
-  } catch (error){
-    console.error("error", error);
-    this.servererror = true;
+
+async delete(cat: string, item: any) {
+  if (cat == 'group') {
+    try {
+      await this.groups.delete(item).subscribe((el) => {
+        this.dialogRef.close(el); // renvoie les données modifiées
+      });
+    } catch (error){
+      console.error("error", error);
+      this.servererror = true;
+    }
+  } else if (cat == 'credits') {
+    try {
+      await this.credits.delete(item).subscribe((el) => {
+        this.dialogRef.close(el); // renvoie les données modifiées
+      });
+    } catch (error){
+      console.error("error", error);
+      this.servererror = true;
+    }
+  }else if (cat == 'savings') {
+    try {
+      await this.savings.delete(item).subscribe((el) => {
+        this.dialogRef.close(el); // renvoie les données modifiées
+      });
+    } catch (error){
+      console.error("error", error);
+      this.servererror = true;
+    }
+  }else if (cat == 'refunds') {
+    try {
+      await this.refunds.delete(item).subscribe((el) => {
+        this.dialogRef.close(el); // renvoie les données modifiées
+      });
+    } catch (error){
+      console.error("error", error);
+      this.servererror = true;
+    }
+  }else if (cat == 'fines') {
+    try {
+      await this.fines.delete(item).subscribe((el) => {
+        this.dialogRef.close(el); // renvoie les données modifiées
+      });
+    } catch (error){
+      console.error("error", error);
+      this.servererror = true;
+    }
+  }else if (cat == 'members') {
+    try {
+      await this.members.delete(item).subscribe((el) => {
+        this.dialogRef.close(el); // renvoie les données modifiées
+      });
+    } catch (error){
+      console.error("error", error);
+      this.servererror = true;
+    }
+  }else if (cat == 'emfunds') {
+    try {
+      await this.emfunds.delete(item).subscribe((el) => {
+        this.dialogRef.close(el); // renvoie les données modifiées
+      });
+    } catch (error){
+      console.error("error", error);
+      this.servererror = true;
+    }
+  }else if (cat == 'emexpenses') {
+    try {
+      await this.emexpenses.delete(item).subscribe((el) => {
+        this.dialogRef.close(el); // renvoie les données modifiées
+      });
+    } catch (error){
+      console.error("error", error);
+      this.servererror = true;
+    }
+  }else if (cat == 'credits') {
+    try {
+      await this.credits.delete(item).subscribe((el) => {
+        this.dialogRef.close(el); // renvoie les données modifiées
+      });
+    } catch (error){
+      console.error("error", error);
+      this.servererror = true;
+    }
+  }else{
+    alert("Une erreur est survenus !");
   }
 }
 }

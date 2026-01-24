@@ -6,46 +6,82 @@
   <mat-sidenav #drawer mode="side" [(opened)]="drawerOpened" class="sidenav">
     <!-- Sidebar identique -->
     <div class="sidebar-logo">
-      <h3>📂 L M S</h3>
+      <h3>🖥️  GMS</h3>
     </div>
     <mat-nav-list>
       <a mat-list-item routerLink="/dashboard" routerLinkActive="active">
-        <mat-icon>dashboard</mat-icon>
+        <!-- <mat-icon>dashboard</mat-icon> -->
+         <span style="color: black; font-size: x-large; margin-right: 20px;">🏠</span>
         <span>Dashboard</span>
       </a>
 
-      <a mat-list-item routerLink="/documents" routerLinkActive="active">
-        <mat-icon>description</mat-icon>
-        <span>Documents</span>
+      <a mat-list-item routerLink="/group" routerLinkActive="active">
+        <!-- <mat-icon>description</mat-icon> -->
+         <span style="color: black; font-size: x-large; margin-right: 20px;">🏢</span>
+        <span>Goupements</span>
       </a>
 
-      <a mat-list-item routerLink="/search" routerLinkActive="active">
+      <!-- <a mat-list-item routerLink="/search" routerLinkActive="active">
         <mat-icon>search</mat-icon>
-        <span>Recherche</span>
+        <span>Credits</span>
+      </a> -->
+   
+      <a mat-list-item routerLink="/member" routerLinkActive="active">
+        <!-- <mat-icon>group</mat-icon> -->
+         <span style="color: black; font-size: x-large; margin-right: 20px;">👪</span>
+        <span>Membres</span>
+      </a>
+      
+      <a mat-list-item routerLink="/saving" routerLinkActive="active">
+        <!-- <mat-icon>archive</mat-icon> -->
+        <span style="color: black; font-size: x-large; margin-right: 20px;">🪙</span>
+        <span>Epargnes</span>
       </a>
 
       <a mat-list-item routerLink="/borrow" routerLinkActive="active">
-        <mat-icon>book</mat-icon>
-        <span>Emprunt</span>
+        <!-- <mat-icon>book</mat-icon> -->
+         <span style="color: black; font-size: x-large; margin-right: 20px;">💳</span>
+        <span>Credits</span>
       </a>
 
-      <a mat-list-item routerLink="/archive" routerLinkActive="active">
-        <mat-icon>archive</mat-icon>
-        <span>Archive</span>
+      <a mat-list-item routerLink="/refund" routerLinkActive="active">
+        <!-- <mat-icon>book</mat-icon> -->
+         <span style="color: black; font-size: x-large; margin-right: 20px;">↪️</span>
+        <span>Remboursements</span>
       </a>
 
-      <a mat-list-item routerLink="/users" routerLinkActive="active">
-        <mat-icon>group</mat-icon>
-        <span>Utilisateurs</span>
+       <a mat-list-item routerLink="/fines" routerLinkActive="active">
+        <!-- <mat-icon>book</mat-icon> -->
+         <span style="color: black; font-size: x-large; margin-right: 20px;">❗</span>
+        <span>Ammandes</span>
       </a>
+
+       <a mat-list-item routerLink="/emfunds" routerLinkActive="active">
+        <!-- <mat-icon>book</mat-icon> -->
+         <span style="color: black; font-size: x-large; margin-right: 20px;">🚨</span>
+        <span>Fonds d'urgence</span>
+      </a>
+
+      <a mat-list-item routerLink="/emexpenses" routerLinkActive="active">
+        <!-- <mat-icon>book</mat-icon> -->
+         <span style="color: black; font-size: x-large; margin-right: 20px;">💸</span>
+        <span>Dépenses</span>
+      </a>
+
+      <a mat-list-item routerLink="/repport" routerLinkActive="active">
+        <!-- <mat-icon>group</mat-icon> -->
+         <span style="color: black; font-size: x-large; margin-right: 20px;">💹</span>
+        <span>Rapports</span>
+      </a>
+      
     </mat-nav-list>
 
-    <div class="sidebar-bottom">
+    <!-- <div class="sidebar-bottom">
       <button mat-stroked-button color="primary" (click)="toggleTheme.emit()">
         <mat-icon>{{ isLight ? 'dark_mode' : 'light_mode' }}</mat-icon>
         {{ isLight ? 'Mode sombre' : 'Mode clair' }}
       </button>
-    </div>
+    </div> -->
   </mat-sidenav>
 
   <mat-sidenav-content>
@@ -54,12 +90,12 @@
         <mat-icon>menu</mat-icon>
       </button>
 
-      <span class="app-title">GESTION DOCUMENTAIRE</span>
+      <span class="app-title">GESTION DES GROUPEMENTS</span>
       <span class="spacer"></span>
 
-      <!-- 🔔 Notifications -->
       <button mat-icon-button [matMenuTriggerFor]="notifMenu" matBadge="{{ unreadCount }}" matBadgeColor="warn" matBadgeHidden="{{ unreadCount === 0 }}">
-        <mat-icon>notifications</mat-icon>
+        <span style="font-size: large; top: -10px; position: relative;"> 🔔 </span>
+        <!-- <mat-icon>notifications</mat-icon> -->
       </button>
 
       <mat-menu #notifMenu="matMenu">
@@ -83,7 +119,8 @@
       <button mat-button [matMenuTriggerFor]="userMenu" class="user-btn">
         <!-- <img class="avatar" src="../../assets/avatar.png" alt="avatar" /> -->
         <span class="user-name">{{ user.name }}</span>
-        <mat-icon>expand_more</mat-icon>
+        👤
+        <!-- <mat-icon>expand_more</mat-icon> -->
       </button>
 
       <mat-menu #userMenu="matMenu">

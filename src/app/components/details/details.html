@@ -1,0 +1,182 @@
+<div>
+	<mat-card *ngIf="cat == 'group'" class="max-w-xl mx-auto mt-8 p-6 container">
+		<div class="flex justify-end gap-2 mt-6" align="end">
+			<button mat-button (click)="dialogRef.close()">
+					❌
+			</button>
+		</div>
+
+		<h2 class="text-2xl font-bold mb-4" style="top: 40px; position: absolute;">
+			Groupement {{ data.item?.name }}
+		</h2>
+
+		<div class="space-y-2">
+				<p><strong>Nom :</strong> {{ data.item?.name }}</p>
+				<p><strong>Membres :</strong> {{ data.item?.members }}</p>
+				<p><strong>Solde :</strong> {{ data.item?.sold }}</p>
+				<p><strong>Frais de Retard :</strong> {{ data.item?.late }}</p>
+				<p><strong>Frais d'absence :</strong> {{ data.item?.absence }}</p>
+				<p><strong>Periode :</strong> Par {{ data.item?.meet }}</p>
+				<p><strong>Femmes : </strong> {{ data.item?.females }} <span> </span> <span> </span><span style="color: gray;" *ngIf="data.item?.females"> Equivalent à :</span> {{data.item?.females * 100 / data.item?.members | number:'1.0-0' }}  %</p>
+				<p><strong>Hommes :</strong> {{ data.item?.members - data.item?.females  }}</p>
+				<p><strong>localisation :</strong> {{ data.item?.location }}</p>
+				<p><strong>Statut :</strong> {{ data.item?.status }}</p>
+		</div>
+	</mat-card>
+	<!-- savings -->
+	<mat-card *ngIf="cat == 'savings'" class="max-w-xl mx-auto mt-8 p-6 container">
+		<div class="flex justify-end gap-2 mt-6" align="end">
+			<button mat-button (click)="dialogRef.close()">
+					❌
+			</button>
+		</div>
+
+		<h2 class="text-2xl font-bold mb-4" style="top: 40px; position: absolute;">
+			Détails de l'epargne
+		</h2>
+
+		<div class="space-y-2">
+				<p><strong>Nom :</strong> {{ data.item?.owner }}</p>
+				<p><strong>Date :</strong> {{ data.item?.date }}</p>
+        		<p><strong>Periode :</strong> {{ data.item?.term }} {{data.item?.period}}</p>
+				<p><strong>Montant :</strong> {{ data.item?.amount }}</p>
+				<p><strong>Statut :</strong> {{ data.item?.status }}</p>
+		</div>
+	</mat-card>
+
+	<mat-card *ngIf="cat == 'credits'" class="max-w-xl mx-auto mt-8 p-6 container">
+		<div class="flex justify-end gap-2 mt-6" align="end">
+			<button mat-button (click)="dialogRef.close()">
+					❌
+			</button>
+		</div>
+
+		<h2 class="text-2xl font-bold mb-4" style="top: 40px; position: absolute;">
+			Détails
+		</h2>
+
+		<div class="space-y-2">
+				<p><strong>Nom :</strong> {{ data.item?.requester }}</p>
+				<p><strong>Date d'Emission :</strong> {{ data.item?.dateE }}</p>
+				<p><strong>Date de remboursement :</strong> {{ data.item?.dateR }}</p>
+				<p><strong>Montant :</strong> {{ data.item?.amount }}</p>
+				<p><strong>Motifes :</strong> {{ data.item?.motif }}</p>
+				<p><strong>Statut : </strong> {{ data.item?.status }}</p>
+		</div>
+	</mat-card>
+
+	<mat-card *ngIf="cat == 'refunds'" class="max-w-xl mx-auto mt-8 p-6 container">
+		<div class="flex justify-end gap-2 mt-6" align="end">
+			<button mat-button (click)="dialogRef.close()">
+					❌
+			</button>
+		</div>
+
+		<h2 class="text-2xl font-bold mb-4" style="top: 40px; position: absolute;">
+			Détails
+		</h2>
+
+		<div class="space-y-2">
+				<p><strong>Nom :</strong> {{ data.item?.name }}</p>
+				<p><strong>Date :</strong> {{ data.item?.date }}</p>
+				<p><strong>Montant :</strong> {{ data.item?.amount }}</p>
+				<p><strong>Statut : </strong> {{ data.item?.status }}</p>
+		</div>
+	</mat-card>
+
+	<mat-card *ngIf="cat == 'fines'" class="max-w-xl mx-auto mt-8 p-6 container">
+		<div class="flex justify-end gap-2 mt-6" align="end">
+			<button mat-button (click)="dialogRef.close()">
+					❌
+			</button>
+		</div>
+
+		<h2 class="text-2xl font-bold mb-4" style="top: 40px; position: absolute;">
+			Détails
+		</h2>
+
+		<div class="space-y-2">
+				<p><strong>Nom :</strong> {{ data.item?.name }}</p>
+				<p><strong>Date :</strong> {{ data.item?.date }}</p>
+				<p><strong>Motifes :</strong> {{ data.item?.motif }}</p>
+				<p><strong>Montant :</strong> {{ data.item?.amount }}</p>
+				<p><strong>Statut : </strong> {{ data.item?.status }}				</p>
+		</div>
+	</mat-card>
+
+	<mat-card *ngIf="cat == 'members'" class="max-w-xl mx-auto mt-8 p-6 container">
+		<div class="flex justify-end gap-2 mt-6" align="end">
+			<button mat-button (click)="dialogRef.close()">
+					❌
+			</button>
+		</div>
+
+		<h2 class="text-2xl font-bold mb-4" style="top: 40px; position: absolute;">
+			{{ data.item?.name }}
+		</h2>
+
+		<div class="space-y-2">
+				<p><strong>Nom : </strong> {{ data.item?.name }}</p>
+				<p><strong>CNI : </strong> {{ data.item?.cni }}</p>
+				<p><strong>Email : </strong> {{ data.item?.email }}</p>
+				<p><strong>Tel : </strong> {{ data.item?.tel }}</p>
+				<p>
+					<strong>Genre : </strong> 
+					<span *ngIf="data.item?.gender == 'F'"> Feminin</span>
+					<span *ngIf="data.item?.gender == 'H'"> Hommes</span>
+				</p>
+				<p><strong>Age : </strong> {{ data.item?.age }}</p>
+				<p><strong>Taille familiale :</strong> {{ data.item?.famSize }}</p>
+				<p><strong>Indigent : </strong> 
+					<span *ngIf="data.item?.handcap == false || data.item?.handcap == 'false'"> Normale</span>
+					<span *ngIf="data.item?.handcap == 'illness'"> Maladie Chronique </span>
+					<span *ngIf="data.item?.handcap == 'handcap'"> Handicapé </span>
+				</p>
+				<p><strong>Groupement : </strong> {{ data.item?.group }} </p>
+				<p><strong>Statut : </strong> 
+					<span *ngIf="data.item?.status == 'Active'"> Active</span>
+					<span *ngIf="data.item?.status == 'Inactive'"> Inactive</span>
+				</p>
+		</div>
+	</mat-card>
+
+  <mat-card *ngIf="cat == 'emfunds'" class="max-w-xl mx-auto mt-8 p-6 container">
+    <div class="flex justify-end gap-2 mt-6" align="end">
+      <button mat-button (click)="dialogRef.close()">
+          ❌
+      </button>
+    </div>
+
+    <h2 class="text-2xl font-bold mb-4" style="top: 40px; position: absolute;">
+      Détails
+    </h2>
+
+    <div class="space-y-2">
+        <p><strong>Nom :</strong> {{ data.item?.owner }}</p>
+        <p><strong>Date :</strong> {{ data.item?.date }}</p>
+        <p><strong>Montant :</strong> {{ data.item?.amount }}</p>
+        <p><strong>Statut : </strong> {{ data.item?.status }}	</p>
+    </div>
+  </mat-card>
+
+  <mat-card *ngIf="cat == 'emexpenses'" class="max-w-xl mx-auto mt-8 p-6 container">
+    <div class="flex justify-end gap-2 mt-6" align="end">
+      <button mat-button (click)="dialogRef.close()">
+          ❌
+      </button>
+    </div>
+
+    <h2 class="text-2xl font-bold mb-4" style="top: 40px; position: absolute;">
+      Détails
+    </h2>
+
+    <div class="space-y-2">
+        <p><strong>Nom :</strong> {{ data.item?.name }}</p>
+        <p><strong>Date :</strong> {{ data.item?.date }}</p>
+        <p><strong>Motifes :</strong> {{ data.item?.motif }}</p>
+        <p><strong>Montant :</strong> {{ data.item?.amount }}</p>
+        <p><strong>Statut : </strong> {{ data.item?.status }}</p>
+    </div>
+  </mat-card>
+</div>
+

@@ -1,0 +1,50 @@
+<div class="container" >
+    <h2 mat-dialog-title>
+    {{ data.action === 'add' ? 'Ajouter une Ammande' : 'Modifier l\'Ammande' }}
+    </h2>
+    <br>
+    <!-- <form [formGroup]="form" (ngSubmit)="data.mode === 'add'? add(doc): edit(doc)"> -->
+    <form [formGroup]="form">
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Nom du tutilaire</mat-label>
+        <input *ngIf="!member" [(ngModel)]="doc.owner" matInput formControlName="owner" required/>
+        <mat-select [(ngModel)]="doc.owner" matInput formControlName="owner" required *ngIf="member">
+          <mat-option *ngFor="let m of member" [value]="m.name">{{m.name}}</mat-option   >
+        </mat-select>
+      </mat-form-field>
+      <!-- <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Motifes</mat-label>
+        <mat-select [(ngModel)]="doc.motif" matInput formControlName="motif" required>
+          <mat-option value="Retard">Retard</mat-option>
+          <mat-option value="Absence">Absence</mat-option>
+        </mat-select>
+      </mat-form-field> -->
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Montant</mat-label>
+        <input type="number" [(ngModel)]="doc.amount" matInput formControlName="amount" required/>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Date</mat-label>
+        <input [(ngModel)]="doc.date" matInput formControlName="date" required/>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Statut</mat-label>
+        <mat-select [(ngModel)]="doc.status" matInput formControlName="status" required>
+          <mat-option value='Confirmé'>Confirmé</mat-option>
+          <mat-option value='En attente'>En attente</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="flex justify-end mt-4" align="end">
+        <button mat-button (click)="dialogRef.close()">Annuler</button>
+        <button mat-raised-button color="btn-primary" (click)="data.action === 'add'? add(doc): edit(doc)">{{ data.action === 'add' ? 'Ajouter' : 'Mettre à jour' }}</button>
+      </div>
+    </form>
+    <div *ngIf="servererror">
+      <p style="color: red;">Une erreur est survenu !</p>
+    </div>
+</div>
+    

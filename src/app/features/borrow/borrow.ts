@@ -5,10 +5,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MatDialog   } from '@angular/material/dialog';
 import { Delete } from '../../components/delete/delete';
-import { Borrows } from "../../services/borrow";
+import { Credits } from "../../services/credits";
 import { Mov } from "../../../models/interfaces";
-import { DetailsBorrow } from '../../components/details-borrow/details-borrow';
 import { AddBorrow } from '../../components/add-borrow/add-borrow';
+import { Details } from '../../components/details/details';
 
 
 @Component({
@@ -18,20 +18,20 @@ import { AddBorrow } from '../../components/add-borrow/add-borrow';
   styleUrl: './borrow.scss'
 })
 export class Borrow {
-  displayedColumns: string[] = ['id', 'date', 'action', 'actor', 'statut', 'actions'];
+  displayedColumns: string[] = ['id', 'demandeur', 'montant', 'emission', 'statut', 'actions'];
   mov : Mov[] = [];
- constructor(private dialog: MatDialog, private data: Borrows){
+ constructor(private dialog: MatDialog, private data: Credits){
 
   }
   ngOnInit() {
     this.loadMov();
   }
   loadMov() {
-    this.data.getAll().subscribe((movs) => (this.mov = movs));
+    this.data.getAll().subscribe((movs) => (this.mov = movs.reverse()));
   }
 
 
-  addMov(){
+  add(){
     const dialogRef = this.dialog.open(AddBorrow, {
       width: '90vw', // ou '80vw' pour responsive
       maxHeight: '1000vh',
@@ -50,10 +50,10 @@ export class Borrow {
   details(mov: any) {
     console.log('📄 Détails du movument :', mov);
     // Naviguer vers une page ou ouvrir une modale
-    const dialogRef = this.dialog.open(DetailsBorrow, {
+    const dialogRef = this.dialog.open(Details, {
         width: '90vw', // ou '80vw' pour responsive
         maxHeight: '1000vh',
-        data: { mode: 'details', item: mov }
+        data: { cat: 'credits', item: mov }
       });
 
       dialogRef.afterClosed().subscribe(result => {
@@ -73,10 +73,7 @@ export class Borrow {
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        if (result) {
           this.loadMov();
-          // this.movumentsService.addmovument(result).subscribe(() => this.loadmovuments());
-        }
       });
   }
 
@@ -86,13 +83,11 @@ export class Borrow {
     const dialogRef = this.dialog.open(Delete, {
         width: '90vw', // ou '80vw' pour responsive
         maxHeight: '1000vh',
-        data: { mode: 'movument' }
+        data: { cat: 'credits', data: mov }
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        if (result) {
-          // this.movumentsService.addmovument(result).subscribe(() => this.loadmovuments());
-        }
+        this.loadMov()
       });
   }
 }

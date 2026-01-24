@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MatDialog   } from '@angular/material/dialog';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { DetailsDoc } from '../../components/details-doc/details-doc';
+import { DetailsGroup } from '../../components/details-group/details-group';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
@@ -86,7 +86,7 @@ export class Search {
 
   details(doc: any) {
     // Naviguer vers une page ou ouvrir une modale
-    const dialogRef = this.dialog.open(DetailsDoc, {
+    const dialogRef = this.dialog.open(DetailsGroup, {
       width: '90vw', // ou '80vw' pour responsive
       maxHeight: '1000vh',
       data: { mode: 'details', item: doc }

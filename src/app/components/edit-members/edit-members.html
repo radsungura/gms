@@ -1,0 +1,79 @@
+<div class="container" >
+    <h2 mat-dialog-title>
+    {{ data.action === 'add' ? 'Ajouter un Membre' : 'Modifier le Membre' }}
+    </h2>
+    <!-- <form [formGroup]="form" (ngSubmit)="data.mode === 'add'? add(doc): edit(doc)"> -->
+    <form [formGroup]="form">
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Nom du membre</mat-label>
+        <input [(ngModel)]="doc.name" matInput formControlName="name" required/>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>CNI</mat-label>
+        <input [(ngModel)]="doc.cni" matInput formControlName="cni" required/>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Email</mat-label>
+        <input [(ngModel)]="doc.email" matInput formControlName="email" required/>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Tel</mat-label>
+        <input [(ngModel)]="doc.tel" matInput formControlName="tel" required/>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Genre</mat-label>
+        <!-- <input [(ngModel)]="doc.gender" matInput formControlName="gender" required/> -->
+        <mat-select [(ngModel)]="doc.gender" matInput formControlName="gender" required>
+          <mat-option value= "F" >Femme</mat-option>
+          <mat-option value= "H" >Homme</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Age</mat-label>
+        <input type="number" [(ngModel)]="doc.age" matInput formControlName="age" required/>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Taille Familiale</mat-label>
+        <input type="number" [(ngModel)]="doc.famSize" matInput formControlName="famSize" required/>
+      </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Handcape</mat-label>
+        <mat-select [(ngModel)]="doc.handcap" matInput formControlName="handcap" required>
+          <mat-option value= "handcap" >Handicapé</mat-option>
+          <mat-option value= "illness" >Maladie Chronique</mat-option>
+          <mat-option value= "false" >Normale</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Groupement</mat-label>
+        <mat-select [(ngModel)]="doc.group" matInput formControlName="group" required>
+          <mat-option *ngFor="let group of groups" [value]="group.name">{{group.name}}</mat-option>
+        </mat-select> 
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Statut</mat-label>
+        <mat-select type="boolean" [(ngModel)]="doc.status" matInput formControlName="status" required>
+          <mat-option value= 'Active' >Active</mat-option>
+          <mat-option value= 'Inactive' >Inactive</mat-option>   
+        </mat-select> 
+      </mat-form-field>
+
+      <div class="flex justify-end mt-4" align="end">
+        <button mat-button (click)="dialogRef.close()">Annuler</button>
+        <button mat-raised-button color="btn-primary" (click)="data.action === 'add'? add(doc): edit(doc)">{{ data.action === 'add' ? 'Ajouter' : 'Mettre à jour' }}</button>
+      </div>
+    </form>
+    <div *ngIf="servererror">
+      <p style="color: red;">Une erreur est survenu !</p>
+    </div>
+</div>
+    

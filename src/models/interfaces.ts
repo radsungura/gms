@@ -27,3 +27,10 @@ export interface User {
   status: string;
   createdAt?: string;
 }
+
+export interface Group {
+  id?: number,
+  name: string,
+  location: string,
+  status: string
+}

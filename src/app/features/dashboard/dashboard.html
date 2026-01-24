@@ -1,31 +1,60 @@
 <div class="dashboard">
   <!-- Stat cards -->
-  <div class="stats-grid">
+  <!-- <div class="stats-grid">
     <mat-card class="all">
-      <!-- <mat-icon>folder</mat-icon> -->
       <span class="icon folder">📄</span>
-      
-      <h2>{{ stats.total }}</h2>
-      <p>Total Documents</p>
+      <h2>{{ groups }}</h2>
+      <p>Groupements</p>
     </mat-card>
+
     <mat-card class="actif">
       <span class="icon folder">✅</span>
-    
-      <!-- <mat-icon>check_circle</mat-icon> -->
-      <h2>{{ stats.actifs }}</h2>
-      <p>Actifs</p>
+      <h2>{{ members }}</h2>
+      <p>Membres</p>
     </mat-card>
+
     <mat-card class="archive">
-      <!-- <mat-icon>archive</mat-icon> -->
       <span class="icon folder">⬆️</span>
-      <h2>{{ stats.archives }}</h2>
-      <p>Empruntés</p>
+      <h2>{{ female }}</h2>
+      <p>Femmes</p>
     </mat-card>
+    
     <mat-card class="user">
       <span class="icon folder">🗃️</span>
+      <h2>{{ impact }}</h2>
+      <p>Impactés</p>
+    </mat-card>
+  </div> -->
+
+  <!-- Stat cards -->
+  <div class="stats-grid">
+
+    <mat-card class="all">
+      <!-- <mat-icon>folder</mat-icon> -->
+      <span class="icon folder">👪</span>
+      <h2>{{ members }}</h2>
+      <p>Membres</p>
+    </mat-card>
+
+    <mat-card class="actif">
+      <span class="icon folder">🚺</span>
+      <!-- <mat-icon>check_circle</mat-icon> -->
+      <h2>{{ female }}</h2>
+      <p>Femmes</p>
+    </mat-card>
+
+    <mat-card class="archive">
+      <!-- <mat-icon>archive</mat-icon> -->
+      <span class="icon folder">♿</span>
+      <h2>{{ handcap }}</h2>
+      <p>Indigent</p>
+    </mat-card>
+    
+    <mat-card class="user">
+      <span class="icon folder">👨‍👩‍👧‍👦</span>
       <!-- <mat-icon>timer</mat-icon> -->
-      <h2>{{ stats.users }}</h2>
-      <p>Archivés</p>
+      <h2>{{ impact }}</h2>
+      <p>Impactés</p>
     </mat-card>
   </div>
 
@@ -36,14 +65,14 @@
       <canvas baseChart [data]="lineChartData" [options]="lineChartOptions" chartType="line"></canvas>
     </mat-card>
 
-    <mat-card class="chart">
+    <mat-card  class="chart">
       <h3>Répartition par type</h3>
       <canvas style="width: 20px; height: 20px;" baseChart [data]="pieChartData" [type]="pieChartType"></canvas>
     </mat-card>
   </div>
 
   <!-- Activity -->
-  <mat-card class="activity section">
+  <!-- <mat-card class="activity section">
     <h3>Activité</h3>
     <mat-list>
       <mat-list-item *ngFor="let act of recentActivity">
@@ -51,5 +80,5 @@
         <span>{{ act.text }}</span>
       </mat-list-item>
     </mat-list>
-  </mat-card>
+  </mat-card> -->
 </div>
