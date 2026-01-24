@@ -88,13 +88,10 @@ export class Repport {
     this.emf.getAll().subscribe(el => this.emfunds = el);
     this.eme.getAll().subscribe(el => this.emexpenses = el);
 
-      this.getrepport("Inkerebutsi");
+      // this.getRepport("Inkerebutsi");
       this.getSavings("Inkerebutsi");
     
   }
-
-  
-
   add(){
 
   }
@@ -113,17 +110,19 @@ export class Repport {
       console.log("test", m);
       
     });
-  }
+  });}
 
-
-  getrepport(item: any){
-      const group = item;
-    this.sav.getAll().subscribe(el => this.savings = el);
-    this.me.getAll().subscribe(el => this.members = el);
-    this.cr.getAll().subscribe(el => this.credits = el);
-    this.ref.getAll().subscribe(el => this.refunds = el);
-    this.fin.getAll().subscribe(el => this.fines = el);
-    this.emf.getAll().subscribe(el => this.emfunds = el);
-    this.eme.getAll().subscribe(el => this.emexpenses = el);
-  }
 }
+
+
+  // getRepport(item: any){
+  //     const group = item;
+  //   this.sav.getAll().subscribe(el => this.savings = el);
+  //   this.me.getAll().subscribe(el => this.members = el);
+  //   this.cr.getAll().subscribe(el => this.credits = el);
+  //   this.ref.getAll().subscribe(el => this.refunds = el);
+  //   this.fin.getAll().subscribe(el => this.fines = el);
+  //   this.emf.getAll().subscribe(el => this.emfunds = el);
+  //   this.eme.getAll().subscribe(el => this.emexpenses = el);
+  // }
+// }
