@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "LMS": {
+    "GMS": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -38,8 +38,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "1.2MB",
+                  "maximumError": "2MB"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -67,10 +67,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "LMS:build:production"
+              "buildTarget": "GMS:build:production"
             },
             "development": {
-              "buildTarget": "LMS:build:development"
+              "buildTarget": "GMS:build:development"
             }
           },
           "defaultConfiguration": "development"
