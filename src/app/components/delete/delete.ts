@@ -39,7 +39,7 @@ constructor(
   public emfunds: EmFunds,
   public emexpenses: EmExpenses
 ){
-  console.log(data);
+  // console.log(data);
   this.cat = data.cat;
 }
 

@@ -16,7 +16,7 @@ export class DetailsGroup {
   constructor(public dialogRef: MatDialogRef<DetailsGroup>,
       @Inject(MAT_DIALOG_DATA) public data: any
     ){
-      console.log(data);
+      // console.log(data);
       
     }
     ngOnInit() {

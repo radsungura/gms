@@ -64,7 +64,7 @@ export class Borrow {
   }
 
   edit(mov: any) {
-    console.log('✏️ Modifier le movument :', mov);
+    // console.log('✏️ Modifier le movument :', mov);
     // Naviguer vers un formulaire ou afficher une modale
     const dialogRef = this.dialog.open(AddBorrow, {
         width: '90vw', // ou '80vw' pour responsive
@@ -78,7 +78,7 @@ export class Borrow {
   }
 
   delete(mov: any) {
-    console.log('🗑️ Supprimer le movument :', mov);
+    // console.log('🗑️ Supprimer le movument :', mov);
     // Confirmer et supprimer via API ou service
     const dialogRef = this.dialog.open(Delete, {
         width: '90vw', // ou '80vw' pour responsive

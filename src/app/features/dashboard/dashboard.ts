@@ -44,7 +44,7 @@ export class Dashboard {
     private save: Savings, private fine: Fines, private emfund: EmFunds){
     this.loads();
     
-    console.log(this.save$);
+    // console.log(this.save$);
     
     }
     
@@ -77,7 +77,7 @@ export class Dashboard {
     this.fine.getAll().subscribe(el =>  this.fines = el.length || 0 );
     this.emfund.getAll().subscribe(el => this.emfunds = el.length || 0 );
     this.save$ = this.save.getAll().subscribe();
-    console.log(this.savings, this.fines, this.emfunds);
+    // console.log(this.savings, this.fines, this.emfunds);
   }
 
   initPieChart() {

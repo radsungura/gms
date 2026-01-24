@@ -28,7 +28,7 @@ export class EditRefunds {
     public dialogRef: MatDialogRef<EditSavings>,
     @Inject(MAT_DIALOG_DATA) public data: any, 
     public serv: Refunds, private members: Members){
-      console.log(data);
+      // console.log(data);
       members.getAll().subscribe(el => this.member = el);
     if (data.action === 'edit' && data.data) {
         this.doc = { ...data.data };
@@ -45,7 +45,7 @@ export class EditRefunds {
     
     this.doc = {};
     this.doc = this.data.data? this.data.data: {};
-    console.log("edit item", this.data.data);
+    // console.log("edit item", this.data.data);
     
   }
 

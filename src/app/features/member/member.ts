@@ -46,7 +46,7 @@ displayedColumns: string[] = ['id', 'name', 'cni', 'tel', 'genre', 'groupe','sta
   }
 
   details(user: any) {
-  console.log('📄 Détails du user :', user);
+  // console.log('📄 Détails du user :', user);
   // Naviguer vers une page ou ouvrir une modale
    const dialogRef = this.dialog.open(Details, {
       width: '90vw', // ou '80vw' pour responsive

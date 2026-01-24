@@ -48,7 +48,7 @@ export class Emexpenses {
   }
 
   details(mov: any) {
-    console.log('📄 Détails du movument :', mov);
+    // console.log('📄 Détails du movument :', mov);
     // Naviguer vers une page ou ouvrir une modale
     const dialogRef = this.dialog.open(Details, {
         width: '90vw', // ou '80vw' pour responsive
@@ -64,7 +64,7 @@ export class Emexpenses {
   }
 
   edit(mov: any) {
-    console.log('✏️ Modifier le movument :', mov);
+    // console.log('✏️ Modifier le movument :', mov);
     // Naviguer vers un formulaire ou afficher une modale
     const dialogRef = this.dialog.open(EditExpenses, {
         width: '90vw', // ou '80vw' pour responsive
@@ -78,7 +78,7 @@ export class Emexpenses {
   }
 
   delete(mov: any) {
-    console.log('🗑️ Supprimer le movument :', mov);
+    // console.log('🗑️ Supprimer le movument :', mov);
     // Confirmer et supprimer via API ou service
     const dialogRef = this.dialog.open(Delete, {
         width: '90vw', // ou '80vw' pour responsive

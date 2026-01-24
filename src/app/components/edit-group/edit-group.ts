@@ -41,14 +41,14 @@ export class EditGroup {
     
     this.doc = {};
     this.doc = this.data.data? this.data.data: {};
-    console.log("edit item", this.data.data);
+    // console.log("edit item", this.data.data);
     
   }
 
   edit(item: any) {
     
     if (this.form.valid) {
-    console.log(item);
+    // console.log(item);
 
       this.serv.update(item.id, item).subscribe((el: any) => {
         this.dialogRef.close(el); // renvoie les données modifiées

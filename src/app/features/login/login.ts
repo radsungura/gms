@@ -37,7 +37,7 @@ export class Login {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      console.log('✅ Connexion réussie :', this.loginForm.value);
+      // console.log('✅ Connexion réussie :', this.loginForm.value);
       this.route.navigate(['/dashboard']);
 
       // Ajoute ici ta logique d’authentification ou de redirection

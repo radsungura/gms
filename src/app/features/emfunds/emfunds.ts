@@ -58,7 +58,7 @@ export class Emfunds {
   }
 
   details(mov: any) {
-    console.log('📄 Détails du movument :', mov);
+    // console.log('📄 Détails du movument :', mov);
     // Naviguer vers une page ou ouvrir une modale
     const dialogRef = this.dialog.open(Details, {
         width: '90vw', // ou '80vw' pour responsive

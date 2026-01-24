@@ -43,14 +43,14 @@ export class EditExpenses {
     
     this.doc = {};
     this.doc = this.data.data? this.data.data: {};
-    console.log("edit item", this.data);
+    // console.log("edit item", this.data);
     
   }
 
   edit(item: any) {
     
     if (this.form.valid) {
-    console.log(item);
+    // console.log(item);
 
           this.serv.update(item.id, item).subscribe((el: any) => {
             this.dialogRef.close(el); // renvoie les données modifiées

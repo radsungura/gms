@@ -60,7 +60,7 @@ displayedColumns: string[] = ['id', 'name', 'email', 'role', 'statut', 'actions'
 }
 
 edit(user: any) {
-  console.log('✏️ Modifier le user :', user);
+  // console.log('✏️ Modifier le user :', user);
   // Naviguer vers un formulaire ou afficher une modale
   const dialogRef = this.dialog.open(EditUser, {
       width: '90vw', // ou '80vw' pour responsive

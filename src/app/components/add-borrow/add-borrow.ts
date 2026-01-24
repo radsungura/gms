@@ -44,7 +44,7 @@ export class AddBorrow {
     
     this.doc = {};
     this.doc = this.data.data? this.data.data: {};
-    console.log("edit item", this.data);
+    // console.log("edit item", this.data);
     
   }
 

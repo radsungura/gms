@@ -29,7 +29,7 @@ export class EditEmfunds {
     public dialogRef: MatDialogRef<EditEmfunds>,
     @Inject(MAT_DIALOG_DATA) public data: any, 
     public serv: EmFunds, private groups: Groups, private members: Members){
-      console.log(data);
+      // console.log(data);
       members.getAll().subscribe(m => this.member = m );
     if (data.action === 'edit' && data.data) {
         this.doc = { ...data.data };
