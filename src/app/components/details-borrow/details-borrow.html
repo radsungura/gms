@@ -1,0 +1,32 @@
+    <mat-card class="max-w-xl mx-auto mt-8 p-6 container">
+        <div class="flex justify-end gap-2 mt-6" align="end">
+        <button mat-button (click)="dialogRef.close()">
+            ❌
+        </button>
+ 
+        <!-- <button mat-stroked-button color="primary">Modifier</button> -->
+      </div>
+      <h2 class="text-2xl font-bold mb-4" style="top: 40px; position: absolute;">Détails du Credit
+      </h2>
+
+      <div class="space-y-2">
+        <p><strong>ID :</strong> {{ data.item?.id }}</p>
+        <p><strong>Demandeur :</strong> {{ data.item?.requester }}</p>
+        <p><strong>Montant :</strong> {{ data.item?.amount }}</p>
+        <p><strong>Motife :</strong> {{ data.item?.motif }}</p>
+        <p><strong>Date d'Emission :</strong> {{ data.item?.dateE }}</p>
+        <p><strong>Date de remboursement :</strong> {{ data.item?.dateR }}</p>
+        <p><strong>Status : </strong>
+          @if (data.item?.status == 'late'){
+            <span class="late">En retard</span>
+          }@else if (data.item?.status == 'paid'){
+            <span class="paid">Rembourse</span>
+          }@else{
+            <span class="pending">En attente</span>
+          }
+          
+        </p>
+        <p><strong>Groupement :</strong> {{ data.item?.group }}</p>
+      </div>
+
+    </mat-card>

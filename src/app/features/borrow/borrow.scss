@@ -1,0 +1,23 @@
+table { width: 100%; margin-top: 20px; 
+     th{background: #1976d224;
+     } 
+     td { padding: 10px; 
+     }
+}
+
+.add-btn{
+  background-color: #008a9b;
+  color: white;
+}
+
+.late{
+  color: red;
+}
+
+.pending{
+  color: orange;
+}
+
+.paid{
+  color: green;
+}

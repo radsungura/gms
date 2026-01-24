@@ -1,0 +1,60 @@
+<div class="container" >
+    <h2 mat-dialog-title>
+    {{ data.action === 'add' ? 'Ajouter un Groupement' : 'Modifier le Groupement' }}
+    </h2>
+    <br>
+    <!-- <form [formGroup]="form" (ngSubmit)="data.mode === 'add'? add(doc): edit(doc)"> -->
+    <form [formGroup]="form">
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Nom du groupe</mat-label>
+        <input [(ngModel)]="doc.name" matInput formControlName="name" required/>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Solde</mat-label>
+        <input type="number" [(ngModel)]="doc.sold" matInput formControlName="sold" required/>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Frais de Retard</mat-label>
+        <input type="number" [(ngModel)]="doc.late" matInput formControlName="late" required/>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Frais d'absence</mat-label>
+        <input type="number" [(ngModel)]="doc.absence" matInput formControlName="absence" required/>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Periode</mat-label>
+        <mat-select [(ngModel)]="doc.meet" matInput formControlName="meet" required>
+          <mat-option value="Semaine">Par Semaine</mat-option>
+          <mat-option value="Mois">Par Mois</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Adresse du groupe</mat-label>
+        <input [(ngModel)]="doc.location" matInput formControlName="location" required/>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Statut</mat-label>
+        <!-- <input [(ngModel)]="doc.status" matInput formControlName="status" required/> -->
+        <mat-select [(ngModel)]="doc.status" matInput formControlName="status" required>
+          <mat-option value= "Active" >Active</mat-option>
+          <mat-option value= "Inactive" >Inactive</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="flex justify-end mt-4" align="end">
+        <button mat-button (click)="dialogRef.close()" color="btn-warn close-btn">Annuler</button>
+        <button mat-raised-button color="btn-primary add-btn" (click)="data.action === 'add'? add(doc): edit(doc)">{{ data.action === 'add' ? 'Ajouter' : 'Mettre à jour' }}</button>
+      </div>
+    </form>
+    <div *ngIf="servererror">
+      <p style="color: red;">Une erreur est survenu !</p>
+    </div>
+</div>
+    
+

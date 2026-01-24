@@ -1,0 +1,88 @@
+
+<div class="container" *ngIf="cat =='group'">
+    <h2 mat-dialog-title>
+    Voulez vous Supprimer ? 
+    </h2>
+    <div mat-dialog-action color="warning" align="end">
+        <button mat-button (click)="dialogRef.close()">Annuler</button>
+        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('group', data.data.id)">Confirmer</button>
+    </div>
+    <span *ngIf="servererror" style="color: red">L'action a echoué !</span>
+</div>
+
+<div class="container" *ngIf="cat =='savings'">
+    <h2 mat-dialog-title>
+    Voulez vous Supprimer ? 
+    </h2>
+    <div mat-dialog-action color="warning" align="end">
+        <button mat-button (click)="dialogRef.close()">Annuler</button>
+        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('savings', data.data.id)">Confirmer</button>
+    </div>
+    <span *ngIf="servererror" style="color: red">L'action a echoué !</span>
+</div>
+
+<div class="container" *ngIf="cat =='credits'">
+    <h2 mat-dialog-title>
+    Voulez vous Supprimer ? 
+    </h2>
+    <div mat-dialog-action color="warning" align="end">
+        <button mat-button (click)="dialogRef.close()">Annuler</button>
+        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('credits', data.data.id)">Confirmer</button>
+    </div>
+    <span *ngIf="servererror" style="color: red">L'action a echoué !</span>
+</div>
+
+<div class="container" *ngIf="cat =='refunds'">
+    <h2 mat-dialog-title>
+    Voulez vous Supprimer ? 
+    </h2>
+    <div mat-dialog-action color="warning" align="end">
+        <button mat-button (click)="dialogRef.close()">Annuler</button>
+        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('refunds', data.data.id)">Confirmer</button>
+    </div>
+    <span *ngIf="servererror" style="color: red">L'action a echoué !</span>
+</div>
+
+<div class="container" *ngIf="cat =='fines'">
+    <h2 mat-dialog-title>
+    Voulez vous Supprimer ? 
+    </h2>
+    <div mat-dialog-action color="warning" align="end">
+        <button mat-button (click)="dialogRef.close()">Annuler</button>
+        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('fines', data.data.id)">Confirmer</button>
+    </div>
+    <span *ngIf="servererror" style="color: red">L'action a echoué !</span>
+</div>
+
+<div class="container" *ngIf="cat =='members'">
+    <h2 mat-dialog-title>
+    Voulez vous Supprimer ? 
+    </h2>
+    <div mat-dialog-action color="warning" align="end">
+        <button mat-button (click)="dialogRef.close()">Annuler</button>
+        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('members', data.data.id)">Confirmer</button>
+    </div>
+    <span *ngIf="servererror" style="color: red">L'action a echoué !</span>
+</div>
+
+<div class="container" *ngIf="cat =='emfunds'">
+    <h2 mat-dialog-title>
+    Voulez vous Supprimer ? 
+    </h2>
+    <div mat-dialog-action color="warning" align="end">
+        <button mat-button (click)="dialogRef.close()">Annuler</button>
+        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('emfunds', data.data.id)">Confirmer</button>
+    </div>
+    <span *ngIf="servererror" style="color: red">L'action a echoué !</span>
+</div>
+
+<div class="container" *ngIf="cat =='emexpenses'">
+    <h2 mat-dialog-title>
+    Voulez vous Supprimer ? 
+    </h2>
+    <div mat-dialog-action color="warning" align="end">
+        <button mat-button (click)="dialogRef.close()">Annuler</button>
+        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('emexpenses', data.data.id)">Confirmer</button>
+    </div>
+    <span *ngIf="servererror" style="color: red">L'action a echoué !</span>
+</div>
