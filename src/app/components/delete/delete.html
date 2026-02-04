@@ -5,7 +5,7 @@
     </h2>
     <div mat-dialog-action color="warning" align="end">
         <button mat-button (click)="dialogRef.close()">Annuler</button>
-        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('group', data.data.id)">Confirmer</button>
+        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('group', data.data._id)">Confirmer</button>
     </div>
     <span *ngIf="servererror" style="color: red">L'action a echoué !</span>
 </div>
@@ -16,7 +16,7 @@
     </h2>
     <div mat-dialog-action color="warning" align="end">
         <button mat-button (click)="dialogRef.close()">Annuler</button>
-        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('savings', data.data.id)">Confirmer</button>
+        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('saving', data.data._id)">Confirmer</button>
     </div>
     <span *ngIf="servererror" style="color: red">L'action a echoué !</span>
 </div>
@@ -27,7 +27,7 @@
     </h2>
     <div mat-dialog-action color="warning" align="end">
         <button mat-button (click)="dialogRef.close()">Annuler</button>
-        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('credits', data.data.id)">Confirmer</button>
+        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('credit', data.data._id)">Confirmer</button>
     </div>
     <span *ngIf="servererror" style="color: red">L'action a echoué !</span>
 </div>
@@ -38,7 +38,7 @@
     </h2>
     <div mat-dialog-action color="warning" align="end">
         <button mat-button (click)="dialogRef.close()">Annuler</button>
-        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('refunds', data.data.id)">Confirmer</button>
+        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('refund', data.data._id)">Confirmer</button>
     </div>
     <span *ngIf="servererror" style="color: red">L'action a echoué !</span>
 </div>
@@ -49,7 +49,7 @@
     </h2>
     <div mat-dialog-action color="warning" align="end">
         <button mat-button (click)="dialogRef.close()">Annuler</button>
-        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('fines', data.data.id)">Confirmer</button>
+        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('fine', data.data._id)">Confirmer</button>
     </div>
     <span *ngIf="servererror" style="color: red">L'action a echoué !</span>
 </div>
@@ -60,7 +60,7 @@
     </h2>
     <div mat-dialog-action color="warning" align="end">
         <button mat-button (click)="dialogRef.close()">Annuler</button>
-        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('members', data.data.id)">Confirmer</button>
+        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('member', data.data._id)">Confirmer</button>
     </div>
     <span *ngIf="servererror" style="color: red">L'action a echoué !</span>
 </div>
@@ -71,7 +71,7 @@
     </h2>
     <div mat-dialog-action color="warning" align="end">
         <button mat-button (click)="dialogRef.close()">Annuler</button>
-        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('emfunds', data.data.id)">Confirmer</button>
+        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('emfund', data.data._id)">Confirmer</button>
     </div>
     <span *ngIf="servererror" style="color: red">L'action a echoué !</span>
 </div>
@@ -82,7 +82,7 @@
     </h2>
     <div mat-dialog-action color="warning" align="end">
         <button mat-button (click)="dialogRef.close()">Annuler</button>
-        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('emexpenses', data.data.id)">Confirmer</button>
+        <button mat-raised-button style="background: red; color: white" color="tertiary" (click)="delete('emexpense', data.data._id)">Confirmer</button>
     </div>
     <span *ngIf="servererror" style="color: red">L'action a echoué !</span>
 </div>

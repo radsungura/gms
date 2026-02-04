@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class Fines {
-  private api = 'http://localhost:3000/fines';
+  private api = environment.apiUrl + 'fines';
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<any[]> {

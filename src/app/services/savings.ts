@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Savings {
-  private api = 'http://localhost:3000/savings';
+  private api = environment.apiUrl + 'savings';
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<any[]> {

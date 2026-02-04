@@ -39,11 +39,13 @@ constructor(
   public emfunds: EmFunds,
   public emexpenses: EmExpenses
 ){
-  // console.log(data);
+  console.log(data);
   this.cat = data.cat;
 }
 
 async delete(cat: string, item: any) {
+    console.log(item);
+
   if (cat == 'group') {
     try {
       await this.groups.delete(item).subscribe((el) => {
@@ -53,7 +55,7 @@ async delete(cat: string, item: any) {
       console.error("error", error);
       this.servererror = true;
     }
-  } else if (cat == 'credits') {
+  } else if (cat == 'credit') {
     try {
       await this.credits.delete(item).subscribe((el) => {
         this.dialogRef.close(el); // renvoie les données modifiées
@@ -62,7 +64,7 @@ async delete(cat: string, item: any) {
       console.error("error", error);
       this.servererror = true;
     }
-  }else if (cat == 'savings') {
+  }else if (cat == 'saving') {
     try {
       await this.savings.delete(item).subscribe((el) => {
         this.dialogRef.close(el); // renvoie les données modifiées
@@ -71,7 +73,7 @@ async delete(cat: string, item: any) {
       console.error("error", error);
       this.servererror = true;
     }
-  }else if (cat == 'refunds') {
+  }else if (cat == 'refund') {
     try {
       await this.refunds.delete(item).subscribe((el) => {
         this.dialogRef.close(el); // renvoie les données modifiées
@@ -80,7 +82,7 @@ async delete(cat: string, item: any) {
       console.error("error", error);
       this.servererror = true;
     }
-  }else if (cat == 'fines') {
+  }else if (cat == 'fine') {
     try {
       await this.fines.delete(item).subscribe((el) => {
         this.dialogRef.close(el); // renvoie les données modifiées
@@ -89,7 +91,7 @@ async delete(cat: string, item: any) {
       console.error("error", error);
       this.servererror = true;
     }
-  }else if (cat == 'members') {
+  }else if (cat == 'member') {    
     try {
       await this.members.delete(item).subscribe((el) => {
         this.dialogRef.close(el); // renvoie les données modifiées
@@ -98,7 +100,7 @@ async delete(cat: string, item: any) {
       console.error("error", error);
       this.servererror = true;
     }
-  }else if (cat == 'emfunds') {
+  }else if (cat == 'emfund') {
     try {
       await this.emfunds.delete(item).subscribe((el) => {
         this.dialogRef.close(el); // renvoie les données modifiées
@@ -107,7 +109,7 @@ async delete(cat: string, item: any) {
       console.error("error", error);
       this.servererror = true;
     }
-  }else if (cat == 'emexpenses') {
+  }else if (cat == 'emexpense') {
     try {
       await this.emexpenses.delete(item).subscribe((el) => {
         this.dialogRef.close(el); // renvoie les données modifiées
@@ -116,7 +118,7 @@ async delete(cat: string, item: any) {
       console.error("error", error);
       this.servererror = true;
     }
-  }else if (cat == 'credits') {
+  }else if (cat == 'credit') {
     try {
       await this.credits.delete(item).subscribe((el) => {
         this.dialogRef.close(el); // renvoie les données modifiées

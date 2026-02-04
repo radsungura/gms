@@ -87,16 +87,16 @@ export class Dashboard {
       {
         
 
-        // data: [
-        //   this.savings,
-        //   this.fines,
-        //   this.emfunds
-        // ]
         data: [
-          5000000,
-          200000,
-          500000
+          this.savings,
+          this.fines,
+          this.emfunds
         ]
+        // data: [
+        //   5000000,
+        //   200000,
+        //   500000
+        // ]
       }
     ]
   };

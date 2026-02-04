@@ -50,8 +50,7 @@ export class AddBorrow {
 
   edit(item: any) {
     if (this.form.valid) {
-      
-          this.serv.update(item.id, item).subscribe((el: any) => {
+          this.serv.update(item._id, item).subscribe((el: any) => {
             this.dialogRef.close(el); // renvoie les données modifiées
           })
     }else{
@@ -68,7 +67,7 @@ export class AddBorrow {
         this.groups.getAll().subscribe(el => {
           group = el.find(g => g.name == owner.group) || {};
           group.sold -= item.amount;
-          this.groups.update(group.id, group).subscribe();
+          this.groups.update(group._id, group).subscribe();
           this.serv.create(item).subscribe((el: any) => {
             this.dialogRef.close(el); // renvoie les données modifiées
           })

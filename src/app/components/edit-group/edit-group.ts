@@ -60,9 +60,13 @@ export class EditGroup {
 
   add(item: any) {    
     if (this.form.valid) {
-      this.serv.create(item).subscribe((el: any) => {
-        this.dialogRef.close(el); // renvoie les données modifiées
-      })
+      try{
+        this.serv.create(item).subscribe((el: any) => {
+          this.dialogRef.close(el); // renvoie les données modifiées
+        });
+      }catch(error){
+          console.log(error);
+      }
     }else{
       this.servererror = true;
     }

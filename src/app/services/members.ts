@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Mov } from '../../models/interfaces'
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Members {
-  private api = 'http://localhost:3000/members';
+  private api = environment.apiUrl + 'members';
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<any[]> {

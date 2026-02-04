@@ -28,7 +28,7 @@ export class Saving {
     this.loadMov();
   }
   loadMov() {
-    this.data.getAll().subscribe((movs) => (this.mov = movs.reverse()));
+    this.data.getAll().subscribe((movs) => (this.mov = movs.reverse(), console.log(movs)));
   }
 
   add(){
@@ -67,6 +67,8 @@ export class Saving {
       this.groups.getAll().subscribe(el => {
         const group = el.find(group => group.name == member.group);
         mov.period = group? group.meet : 'Mois'
+        console.log(mov);
+        
       // Naviguer vers une page ou ouvrir une modale
         const dialogRef = this.dialog.open(Details, {
           width: '90vw', // ou '80vw' pour responsive

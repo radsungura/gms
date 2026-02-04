@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmExpenses {
-  private api = 'http://localhost:3000/emExpenses';
+  private api = environment.apiUrl + 'emExpenses';
+
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<any[]> {

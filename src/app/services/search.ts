@@ -3,13 +3,14 @@ import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Doc } from '../../models/interfaces';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class SearchService {
-  private api = 'http://localhost:4000/documents';
+  private api = environment.apiUrl + 'savings';
   documents: Doc[] = [];
   data: any;
   private source = new BehaviorSubject<any[]>([]);

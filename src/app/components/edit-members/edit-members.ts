@@ -58,7 +58,7 @@ export class EditMembers {
     if (this.form.valid) {
     // console.log(item);
 
-      this.serv.update(item.id, item).subscribe((el: any) => {
+      this.serv.update(item._id, item).subscribe((el: any) => {
         this.dialogRef.close(el); // renvoie les données modifiées
       })
     }else{
@@ -68,12 +68,17 @@ export class EditMembers {
 
   add(item: any) {    
     if (this.form.valid) {
-      this.serv.create(item).subscribe((el: any) => {
-        this.dialogRef.close(el); // renvoie les données modifiées
-      })
+      try {
+        this.serv.create(item).subscribe((el: any) => {
+          this.dialogRef.close(el); // renvoie les données modifiées
+        });
+      } catch (error) {
+        console.log(error);
+        
+      }
     }else{
-      this.servererror = true;
-    }
+        this.servererror = true;
+      }
   }
 
 }
