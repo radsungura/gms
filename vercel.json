@@ -4,9 +4,10 @@
       "src": "/(.*)\\.(js|css|png|jpg|svg|ico|json|woff2?)$",
       "dest": "/$1"
     },
-    {
-      "src": "/(.*)",
-      "dest": "/browser/index.html"
-    }
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+  ,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
