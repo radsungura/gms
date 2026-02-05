@@ -1,12 +1,5 @@
 {
-  "routes": [
-    {
-      "src": "/(.*)\\.(js|css|png|jpg|svg|ico|json|woff2?)$",
-      "dest": "/$1"
-    },
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
-  ,
+  "trailingSlash": false,
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
