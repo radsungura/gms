@@ -13,3 +13,26 @@
   background-color: #008a9b;
   color: white;
 }
+.bold{
+  font-size: large;
+  font-weight: 500;
+}
+.simple{
+  // font-size: large;
+  // font-weight: 500;
+}
+td{
+  padding: 10px;
+}
+.thead{
+  font-size: large;
+  font-weight: 700; 
+  background-color: bisque;
+}
+
+.main{
+  display: flex;
+  justify-content: center;
+  top: 10px;
+  position: relative;
+}
