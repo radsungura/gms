@@ -15,7 +15,7 @@
 }
 .bold{
   font-size: large;
-  font-weight: 500;
+  font-weight: 700;
 }
 .simple{
   // font-size: large;
@@ -35,4 +35,8 @@ td{
   justify-content: center;
   top: 10px;
   position: relative;
+}
+
+mat-form-field{
+  margin: 20px;
 }

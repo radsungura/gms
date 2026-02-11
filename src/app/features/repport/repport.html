@@ -1,7 +1,29 @@
 <mat-toolbar color="primary" style="justify-content: space-between;">Rapports
-  
+    <form class="form" [formGroup]="form">
+        <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Categorie</mat-label>
+            <mat-select [(ngModel)]="search.cat" matInput formControlName="cat" type="text">
+                <mat-option value="year">Par Année</mat-option>
+                <mat-option value="group">Par Groupe</mat-option>
+            </mat-select>
+        </mat-form-field>
+         <mat-form-field *ngIf="search.cat == 'group'" appearance="outline" >
+            <mat-label>Valeur</mat-label>
+            <mat-select [(ngModel)]="search.value" matInput formControlName="value" type="text">
+                <mat-option value="Inkerebutsi">Inkerebutsi</mat-option>
+                <mat-option value="Abadasigana">Abadasigana</mat-option>
+            </mat-select>
+        </mat-form-field>
+         <mat-form-field *ngIf="search.cat == 'year'" appearance="outline" class="w-full">
+            <mat-label>Valeur</mat-label>
+            <mat-select [(ngModel)]="search.value" matInput formControlName="value" type="text">
+                <mat-option value="2025">2025</mat-option>
+                <mat-option value="2026">2026</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
 
-    <button mat-raised-button class="add-btn" color="accent">
+    <button  mat-raised-button class="add-btn" color="accent">
     <!-- <mat-icon>add</mat-icon>  -->
      <span style="
      font-size: larger; color: aliceblue;
@@ -43,7 +65,7 @@
         </tr>
         <tr>
             <td class="bold">Interets</td>
-            <td *ngFor="let fine of finerep, let i = index"  [ngClass]="i === 12 ? 'bold' : 'simple'">{{fine}}</td>
+            <td *ngFor="let fine of finerep, let i = index" [ngClass]="i === 12 ? 'bold' : 'simple'">{{fine}}</td>
         </tr>
         <tr>
             <td class="bold">Fond d'urgence</td>
@@ -51,14 +73,15 @@
         </tr>
         <tr>
             <td class="bold">Ammandes</td>
-            <td *ngFor="let fine of finerep, let i = index"  [ngClass]="i === 12 ? 'bold' : 'simple'">{{fine}}</td>
+            <td *ngFor="let fine of finerep, let i = index" [ngClass]="i === 12 ? 'bold' : 'simple'">{{fine}}</td>
         </tr>
-        <tr>
-            <td class="bold" colspan="13">Totale</td>
+        <tr class="bold">
+            <td class="bold" >Totale</td>
+            <td *ngFor="let montot of remontot, let i = index"  [ngClass]="i === 12 ? 'bold' : 'simple'">{{montot}}</td>
             <td Class="bold" >{{savtot}}</td>
         </tr>
         <tr>
-            <td rowspan="3" colspan="14" style="background-color: rgba(0, 138, 155, 0.24); height: 20px;"></td>
+            <td rowspan="3" colspan="14"  style="background-color: rgba(0, 138, 155, 0.24); height: 20px;"></td>
         </tr>
         <tr>
         </tr> 
@@ -72,9 +95,10 @@
             <td class="bold">Credits</td>
             <td *ngFor="let cre of crerep, let i = index"  [ngClass]="i === 12 ? 'bold' : 'simple'">{{cre}}</td>
         </tr>
-        <tr>
-            <td class="bold" colspan="13">Totale</td>
-            <td Class="bold">{{extot}}</td>
+        <tr class="bold">
+            <td>Totale</td>
+            <td *ngFor="let montot of exmontot, let i = index">{{montot}}</td>
+            <td>{{extot}}</td>
         </tr>
         <!-- <tr>
             <td class="bold">Solde</td>

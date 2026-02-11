@@ -18,7 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-repport',
-  imports: [MatToolbarModule, CommonModule, MatSelectModule, MatDialogModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
+  imports: [MatToolbarModule, CommonModule, MatSelectModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
   templateUrl: './repport.html',
   styleUrl: './repport.scss'
 })
@@ -44,18 +44,7 @@ export class Repport {
     "Jul", "Aoug", "Sept", "Oct", "Nov", "Dec"
   ];
   groups: any[] = [];
-  group: any = {
-      "id": "1",
-      "name": "Inkerebutsi",
-      "sold": 50050388745,
-      "late": 300,
-      "absence": 1000,
-      "location": "Muha,Kanyosha",
-      "meet": "Mois",
-      "status": "Active",
-      "members": 7,
-      "females": 4
-    };
+
   members: any[] = [];
   credits: any[] = [];
   refunds: any[] = [];
@@ -71,8 +60,11 @@ export class Repport {
   emfrep: any[] = [];
   crerep: any[] = [];
   emexrep: any[] = [];
+  remontot: any[] = [0,0,0,0,0,0,0,0,0,0,0,0];
+  exmontot: any[] = [0,0,0,0,0,0,0,0,0,0,0,0];
   savtot: number = 0;
   extot: number = 0;
+  search: any = {};
   constructor(
     private me: Members,private sav: Savings,
     private cr: Credits,private ref: Refunds, 
@@ -80,82 +72,33 @@ export class Repport {
     private eme: EmExpenses, private gr: Groups,
     private fb: FormBuilder
   ){
-    let date = "12/10/2026";
+    // let date = "12/10/2026";
     // console.log(parseInt(date.split('/')[1]));
-    this.group = {};
+
+     this.form = this.fb.group({
+    cat: [this.search.cat, Validators.required],
+    value: [this.search.value, Validators.required]
+  })
   }
 
   ngOnInit(){
-    this.gr.getAll().subscribe(el => this.groups = el);
-    this.sav.getAll().subscribe(el => this.savings = el);
-    this.me.getAll().subscribe(el => this.members = el);
-    this.cr.getAll().subscribe(el => this.credits = el);
-    this.ref.getAll().subscribe(el => this.refunds = el);
-    this.fin.getAll().subscribe(el => this.fines = el);
-    this.emf.getAll().subscribe(el => this.emfunds = el);
-    this.eme.getAll().subscribe(el => this.emexpenses = el);
-
-    // this.getRepport("Inkerebutsi");
-    // this.getSavings("Inkerebutsi");
-    // console.log(this.getMonthSav("Inkerebutsi"));
     this.savbyMonth();
     this.refbyMonth();
     this.finebyMonth();
     this.emfundbyMonth();
     this.emexbyMonth();
     this.creditbyMonth();
-    // this.getMonthSav("Inkerebutsi");
   }
 
-  getSavings(item: any){
-      const group = item;
-    return this.sav.getAll().subscribe(el => {
-      let m: any[] = [];
-      this.savings = el;
-      for (let i = 0; i < this.savings.length; i++) {
-
-        const sav = this.savings[i];
-        
-         m[i+1] =  (parseInt(sav.date.split('/')[1])  == i) ? parseInt(sav.date.split('/')[1]) : 0;
-      console.log("items", sav.date.split('/')[1]);
-
-      }
-
-      console.log("test", m);
-      
-  });}
-
-  getMonthSav(group: any){
-    return this.sav.getAll().subscribe(el => {
-      console.log("result", el);
-      this.savtot += el.reduce((sum, s) => sum + s.amount, 0);
-      const res: {[key: string]: number}={};
-      el.forEach(item => {
-        const date = new Date(item.date);
-      console.log("result", this.months);
-
-        const monthName = this.months[date.getMonth()];
-        if (!res[monthName]) {
-          res[monthName] = 0;
-        } 
-          res[monthName] += item.amount;
-      });
-      console.log("result", res);
-      
-      return res;
-    });
-  }
   savbyMonth(){
-    let rep: any[] = [];
       return this.sav.getAll().subscribe(el => {
         this.savtot += el.reduce((sum, s) => sum + s.amount, 0);
         for (let i = 0; i < this.months.length; i++) {
-          const element = this.months[i];
           const records = el.filter(s=> ((new Date(s.date).getMonth()) == i)).map(d=> d.amount);
           this.savrep[i] = records.reduce((sum, s) => sum + s, 0);
+          this.remontot[i] += parseInt(this.savrep[i]);
         }
         this.savrep.push(this.savrep.reduce((sum, s) => sum + s, 0));
-        // console.log(this.savrep);
     })
   }
 
@@ -167,13 +110,13 @@ export class Repport {
           const element = this.months[i];
           const records = el.filter(s=> ((new Date(s.date).getMonth()) == i)).map(d=> d.amount);
           this.refrep[i] = records.reduce((sum, s) => sum + s, 0);
+          this.remontot[i] += parseInt(this.refrep[i]);
         }
         this.refrep.push(this.refrep.reduce((sum, s) => sum + s, 0));
-        // console.log(this.refrep);
     })
   }
 
-   finebyMonth(){
+  finebyMonth(){
      let rep: any[] = [];
       return this.fin.getAll().subscribe(el => {
         this.savtot += el.reduce((sum, s) => sum + s.amount, 0);
@@ -181,9 +124,9 @@ export class Repport {
           const element = this.months[i];
           const records = el.filter(s=> ((new Date(s.date).getMonth()) == i)).map(d=> d.amount);
           this.finerep[i] = records.reduce((sum, s) => sum + s, 0);
+          this.remontot[i] += parseInt(this.finerep[i]);
         }
         this.finerep.push(this.finerep.reduce((sum, s) => sum + s, 0));
-        // console.log(this.finerep);
     })
   }
 
@@ -194,8 +137,7 @@ export class Repport {
       for (let i = 0; i < this.months.length; i++) {
         const records = el.filter(s=> ((new Date(s.date).getMonth()) == i)).map(d=> d.amount);
         this.emfrep[i] = records.reduce((sum, s) => sum + s, 0);
-      console.log(records);
-
+        this.remontot[i] += parseInt(this.emfrep[i]);
       }
       this.emfrep.push(this.emfrep.reduce((sum, s) => sum + s, 0));
       // console.log(this.emfrep);
@@ -210,9 +152,9 @@ export class Repport {
         const element = this.months[i];
         const records = el.filter(s=> ((new Date(s.date).getMonth()) == i)).map(d=> d.amount);
         this.emexrep[i] = records.reduce((sum, s) => sum + s, 0);
+        this.exmontot[i] += parseInt(this.emexrep[i]);
       }
       this.emexrep.push(this.emexrep.reduce((sum, s) => sum + s, 0));
-      // console.log(this.emexrep);
     })
   }
 
@@ -224,22 +166,14 @@ export class Repport {
         const element = this.months[i];
         const records = el.filter(s=> ((new Date(s.dateE).getMonth()) == i)).map(d=> d.amount);
         this.crerep[i] = records.reduce((sum, s) => sum + s, 0);
+        this.exmontot[i] += parseInt(this.crerep[i]);
       }
       this.crerep.push(this.crerep.reduce((sum, s) => sum + s, 0));
-      // console.log(this.crerep);
     })
   }
   
+  category(item: string){
+    
+  }
 }
 
-  // getRepport(item: any){
-  //     const group = item;
-  //   this.sav.getAll().subscribe(el => this.savings = el);
-  //   this.me.getAll().subscribe(el => this.members = el);
-  //   this.cr.getAll().subscribe(el => this.credits = el);
-  //   this.ref.getAll().subscribe(el => this.refunds = el);
-  //   this.fin.getAll().subscribe(el => this.fines = el);
-  //   this.emf.getAll().subscribe(el => this.emfunds = el);
-  //   this.eme.getAll().subscribe(el => this.emexpenses = el);
-  // }
-// }
