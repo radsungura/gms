@@ -9,27 +9,27 @@
         </mat-form-field>
          <mat-form-field *ngIf="search.cat == 'group'" appearance="outline" >
             <mat-label>Valeur</mat-label>
-            <mat-select [(ngModel)]="search.value" matInput formControlName="value" type="text">
+            <mat-select [(ngModel)]="search.value" (onChange)="load()" matInput formControlName="value" type="text">
                 <mat-option value="Inkerebutsi">Inkerebutsi</mat-option>
                 <mat-option value="Abadasigana">Abadasigana</mat-option>
             </mat-select>
         </mat-form-field>
          <mat-form-field *ngIf="search.cat == 'year'" appearance="outline" class="w-full">
             <mat-label>Valeur</mat-label>
-            <mat-select [(ngModel)]="search.value" matInput formControlName="value" type="text">
+            <mat-select [(ngModel)]="search.value" (change)="load()" matInput formControlName="value" type="text">
                 <mat-option value="2025">2025</mat-option>
                 <mat-option value="2026">2026</mat-option>
             </mat-select>
         </mat-form-field>
     </form>
 
-    <button  mat-raised-button class="add-btn" color="accent">
+    <button  mat-raised-button class="add-btn" (click)="load()" color="accent">
     <!-- <mat-icon>add</mat-icon>  -->
      <span style="
      font-size: larger; color: aliceblue;
     font-family: fantasy;
-    font-weight: bolder;">+</span>
-    Ajouter
+    font-weight: bolder;">🌀</span>
+    charger
   </button>
 </mat-toolbar>
 
@@ -37,18 +37,7 @@
     <table border="1">
         <tr class="thead">
             <td>Designation</td>
-            <td>Jan</td>
-            <td>Fev</td>
-            <td>Mars</td>
-            <td>Avril</td>
-            <td>Mai</td>
-            <td>Jan</td>
-            <td>Jul</td>
-            <td>Aout</td>
-            <td>Sept</td>
-            <td>Oct</td>
-            <td>Nov</td>
-            <td>Dec</td>
+            <td *ngFor="let m of months">{{m}}</td>
             <td>Total</td>
         </tr>
         <!-- <tr>

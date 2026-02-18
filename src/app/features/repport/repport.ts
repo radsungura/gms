@@ -52,8 +52,6 @@ export class Repport {
   fines: any[] = [];
   emfunds: any[] = [];
   emexpenses: any[] = [];
-  form: any;
-  data: any;
   savrep: any[] = [];
   refrep: any[] = [];
   finerep: any[] = [];
@@ -65,6 +63,8 @@ export class Repport {
   savtot: number = 0;
   extot: number = 0;
   search: any = {};
+  form: any;
+  data: any;
   constructor(
     private me: Members,private sav: Savings,
     private cr: Credits,private ref: Refunds, 
@@ -78,20 +78,52 @@ export class Repport {
      this.form = this.fb.group({
     cat: [this.search.cat, Validators.required],
     value: [this.search.value, Validators.required]
-  })
+  });
+  this.search = {cat: "", value: ""};
+
   }
 
   ngOnInit(){
-    this.savbyMonth();
-    this.refbyMonth();
-    this.finebyMonth();
-    this.emfundbyMonth();
-    this.emexbyMonth();
-    this.creditbyMonth();
+      this.savbyMonth(this.search.cat, this.search.value);
+      this.refbyMonth(this.search.cat, this.search.value);
+      this.finebyMonth(this.search.cat, this.search.value);
+      this.emfundbyMonth(this.search.cat, this.search.value);
+      this.emexbyMonth(this.search.cat, this.search.value);
+      this.creditbyMonth(this.search.cat, this.search.value);
+  }
+  load(){
+    this.savrep = [];
+    this.refrep = [];
+    this.finerep = [];
+    this.emfrep = [];
+    this.crerep = [];
+    this.emexrep = [];
+    this.remontot = [0,0,0,0,0,0,0,0,0,0,0,0];
+    this.exmontot = [0,0,0,0,0,0,0,0,0,0,0,0];
+    this.savtot = 0;
+    this.extot = 0;
+    if(this.search.cat && this.search.value){
+      this.savbyMonth(this.search.cat, this.search.value);
+      this.refbyMonth(this.search.cat, this.search.value);
+      this.finebyMonth(this.search.cat, this.search.value);
+      this.emfundbyMonth(this.search.cat, this.search.value);
+      this.emexbyMonth(this.search.cat, this.search.value);
+      this.creditbyMonth(this.search.cat, this.search.value);
+    }
   }
 
-  savbyMonth(){
-      return this.sav.getAll().subscribe(el => {
+  savbyMonth(cat: any, value: any){
+      this.sav.getAll().subscribe(sav => {
+        let el;
+        if (cat == "year") {
+          el = sav.filter(s=> value == new Date(s.date).getFullYear())
+        }
+        // else if (cat == "group") {
+        //   let el = sav.filter(s=> value == new Date(s.).getFullYear())
+        // } 
+        else {
+          el = sav;
+        }
         this.savtot += el.reduce((sum, s) => sum + s.amount, 0);
         for (let i = 0; i < this.months.length; i++) {
           const records = el.filter(s=> ((new Date(s.date).getMonth()) == i)).map(d=> d.amount);
@@ -99,12 +131,22 @@ export class Repport {
           this.remontot[i] += parseInt(this.savrep[i]);
         }
         this.savrep.push(this.savrep.reduce((sum, s) => sum + s, 0));
-    })
+      })
   }
 
-  refbyMonth(){
+  refbyMonth(cat: any, value: any){
      let rep: any[] = [];
-      return this.ref.getAll().subscribe(el => {
+      return this.ref.getAll().subscribe(ref => {
+         let el;
+        if (cat == "year") {
+          el = ref.filter(s=> value == new Date(s.date).getFullYear())
+        }
+        // else if (cat == "group") {
+        //   let el = sav.filter(s=> value == new Date(s.).getFullYear())
+        // } 
+        else {
+          el = ref;
+        }
         this.savtot += el.reduce((sum, s) => sum + s.amount, 0);
         for (let i = 0; i < this.months.length; i++) {
           const element = this.months[i];
@@ -116,9 +158,19 @@ export class Repport {
     })
   }
 
-  finebyMonth(){
+  finebyMonth(cat: any, value: any){
      let rep: any[] = [];
-      return this.fin.getAll().subscribe(el => {
+      return this.fin.getAll().subscribe(fin => {
+         let el;
+        if (cat == "year") {
+          el = fin.filter(s=> value == new Date(s.date).getFullYear())
+        }
+        // else if (cat == "group") {
+        //   let el = sav.filter(s=> value == new Date(s.).getFullYear())
+        // } 
+        else {
+          el = fin;
+        }
         this.savtot += el.reduce((sum, s) => sum + s.amount, 0);
         for (let i = 0; i < this.months.length; i++) {
           const element = this.months[i];
@@ -130,9 +182,19 @@ export class Repport {
     })
   }
 
-  emfundbyMonth(){
+  emfundbyMonth(cat: any, value: any){
     let rep: any[] = [];
-    return this.emf.getAll().subscribe(el => {
+    return this.emf.getAll().subscribe(em => {
+       let el;
+        if (cat == "year") {
+          el = em.filter(s=> value == new Date(s.date).getFullYear())
+        }
+        // else if (cat == "group") {
+        //   let el = sav.filter(s=> value == new Date(s.).getFullYear())
+        // } 
+        else {
+          el = em;
+        }
       this.savtot += el.reduce((sum, s) => sum + s.amount, 0);
       for (let i = 0; i < this.months.length; i++) {
         const records = el.filter(s=> ((new Date(s.date).getMonth()) == i)).map(d=> d.amount);
@@ -144,9 +206,19 @@ export class Repport {
     })
   }
 
-  emexbyMonth(){
+  emexbyMonth(cat: any, value: any){
     let rep: any[] = [];
-    return this.eme.getAll().subscribe(el => {
+    return this.eme.getAll().subscribe(emex => {
+       let el;
+        if (cat == "year") {
+          el = emex.filter(s=> value == new Date(s.date).getFullYear())
+        }
+        // else if (cat == "group") {
+        //   let el = sav.filter(s=> value == new Date(s.).getFullYear())
+        // } 
+        else {
+          el = emex;
+        }
       this.extot += el.reduce((sum, s) => sum + s.amount, 0);
       for (let i = 0; i < this.months.length; i++) {
         const element = this.months[i];
@@ -158,9 +230,19 @@ export class Repport {
     })
   }
 
-  creditbyMonth(){
+  creditbyMonth(cat: any, value: any){
     let rep: any[] = [];
-    return this.cr.getAll().subscribe(el => {
+    return this.cr.getAll().subscribe(cr => {
+      let el;
+        if (cat == "year") {
+          el = cr.filter(s=> value == new Date(s.date).getFullYear())
+        }
+        // else if (cat == "group") {
+        //   let el = sav.filter(s=> value == new Date(s.).getFullYear())
+        // } 
+        else {
+          el = cr;
+        }
       this.extot += el.reduce((sum, s) => sum + s.amount, 0);
       for (let i = 0; i < this.months.length; i++) {
         const element = this.months[i];
@@ -170,10 +252,6 @@ export class Repport {
       }
       this.crerep.push(this.crerep.reduce((sum, s) => sum + s, 0));
     })
-  }
-  
-  category(item: string){
-    
   }
 }
 
