@@ -118,9 +118,9 @@ export class Repport {
         if (cat == "year") {
           el = sav.filter(s=> value == new Date(s.date).getFullYear())
         }
-        // else if (cat == "group") {
-        //   let el = sav.filter(s=> value == new Date(s.).getFullYear())
-        // } 
+        else if (cat == "group") {
+          el = sav.filter(s=> value == s.group)
+        } 
         else {
           el = sav;
         }
@@ -141,9 +141,9 @@ export class Repport {
         if (cat == "year") {
           el = ref.filter(s=> value == new Date(s.date).getFullYear())
         }
-        // else if (cat == "group") {
-        //   let el = sav.filter(s=> value == new Date(s.).getFullYear())
-        // } 
+        else if (cat == "group") {
+          el = ref.filter(s=> value == s.group)
+        } 
         else {
           el = ref;
         }
@@ -165,9 +165,9 @@ export class Repport {
         if (cat == "year") {
           el = fin.filter(s=> value == new Date(s.date).getFullYear())
         }
-        // else if (cat == "group") {
-        //   let el = sav.filter(s=> value == new Date(s.).getFullYear())
-        // } 
+        else if (cat == "group") {
+          el = fin.filter(s=> value == s.group)
+        } 
         else {
           el = fin;
         }
@@ -189,9 +189,9 @@ export class Repport {
         if (cat == "year") {
           el = em.filter(s=> value == new Date(s.date).getFullYear())
         }
-        // else if (cat == "group") {
-        //   let el = sav.filter(s=> value == new Date(s.).getFullYear())
-        // } 
+        else if (cat == "group") {
+          el = em.filter(s=> value == s.group)
+        } 
         else {
           el = em;
         }
@@ -213,9 +213,9 @@ export class Repport {
         if (cat == "year") {
           el = emex.filter(s=> value == new Date(s.date).getFullYear())
         }
-        // else if (cat == "group") {
-        //   let el = sav.filter(s=> value == new Date(s.).getFullYear())
-        // } 
+        else if (cat == "group") {
+          el = emex.filter(s=> value == s.group)
+        } 
         else {
           el = emex;
         }
@@ -237,9 +237,9 @@ export class Repport {
         if (cat == "year") {
           el = cr.filter(s=> value == new Date(s.date).getFullYear())
         }
-        // else if (cat == "group") {
-        //   let el = sav.filter(s=> value == new Date(s.).getFullYear())
-        // } 
+        else if (cat == "group") {
+          el = cr.filter(s=> value == s.group)
+        } 
         else {
           el = cr;
         }

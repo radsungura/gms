@@ -23,6 +23,7 @@ export class Savings {
   }
 
   update(id: number, doc: any): Observable<any> {
+    delete doc._id;
     return this.http.put<any>(`${this.api}/${id}`, doc);
   }
 }
