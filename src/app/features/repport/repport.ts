@@ -74,7 +74,7 @@ export class Repport {
   ){
     // let date = "12/10/2026";
     // console.log(parseInt(date.split('/')[1]));
-
+    gr.getAll().subscribe(el => this.groups = el);
      this.form = this.fb.group({
     cat: [this.search.cat, Validators.required],
     value: [this.search.value, Validators.required]

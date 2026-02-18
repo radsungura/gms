@@ -17,11 +17,12 @@ export class EmFunds {
     return this.http.post<any>(this.api, doc);
   }
 
-  delete(id: number): Observable<void> {
+  delete(id: any): Observable<void> {
     return this.http.delete<void>(`${this.api}/${id}`);
   }
 
-  update(id: number, doc: any): Observable<any> {
+  update(id: any, doc: any): Observable<any> {
+    delete doc._id;
     return this.http.put<any>(`${this.api}/${id}`, doc);
   }
 }

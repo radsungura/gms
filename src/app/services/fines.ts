@@ -17,11 +17,12 @@ export class Fines {
     return this.http.post<any>(this.api, doc);
   }
 
-  delete(id: number): Observable<void> {
+  delete(id: any): Observable<void> {
     return this.http.delete<void>(`${this.api}/${id}`);
   }
 
-  update(id: number, doc: any): Observable<any> {
-    return this.http.put<any>(`${this.api}/${id}`, doc);
+  update(id: any, item: any): Observable<any> {
+    delete item._id;
+    return this.http.put<any>(`${this.api}/${id}`, item);
   }
 }

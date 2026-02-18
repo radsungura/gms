@@ -50,7 +50,7 @@ export class EditGroup {
     if (this.form.valid) {
     // console.log(item);
 
-      this.serv.update(item.id, item).subscribe((el: any) => {
+      this.serv.update(item._id, item).subscribe((el: any) => {
         this.dialogRef.close(el); // renvoie les données modifiées
       })
     }else{

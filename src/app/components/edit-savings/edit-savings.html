@@ -13,13 +13,12 @@
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="w-full">
+      <!-- <mat-form-field appearance="outline" class="w-full">
         <mat-label>Group</mat-label>
-        <!-- <input type="number" [(ngModel)]="doc.group" matInput formControlName="group" required/> -->
         <mat-select [(ngModel)]="doc.group" matInput formControlName="group" required *ngIf="groups">
-          <mat-option *ngFor="let m of groups" [value]="m.name">{{m.name}}</mat-option   >
+          <mat-option *ngFor="let g of groups" [value]="g.name">{{g.name}}</mat-option   >
         </mat-select>
-      </mat-form-field>
+      </mat-form-field> -->
 
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Periode</mat-label>
@@ -33,7 +32,7 @@
 
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Date</mat-label>
-        <input [(ngModel)]="doc.date" matInput formControlName="date" required/>
+        <input type="date" [(ngModel)]="doc.date" matInput formControlName="date" required/>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">

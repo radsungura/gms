@@ -9,14 +9,13 @@
         </mat-form-field>
          <mat-form-field *ngIf="search.cat == 'group'" appearance="outline" >
             <mat-label>Valeur</mat-label>
-            <mat-select [(ngModel)]="search.value" (onChange)="load()" matInput formControlName="value" type="text">
-                <mat-option value="Inkerebutsi">Inkerebutsi</mat-option>
-                <mat-option value="Abadasigana">Abadasigana</mat-option>
+            <mat-select [(ngModel)]="search.value" (selectionChange)="load()" matInput formControlName="value" type="text">
+                <mat-option *ngFor="let g of groups" [value]="g.name">{{g.name}}</mat-option>
             </mat-select>
         </mat-form-field>
          <mat-form-field *ngIf="search.cat == 'year'" appearance="outline" class="w-full">
             <mat-label>Valeur</mat-label>
-            <mat-select [(ngModel)]="search.value" (change)="load()" matInput formControlName="value" type="text">
+            <mat-select [(ngModel)]="search.value" (selectionChange)="load()" matInput formControlName="value" type="text">
                 <mat-option value="2025">2025</mat-option>
                 <mat-option value="2026">2026</mat-option>
             </mat-select>

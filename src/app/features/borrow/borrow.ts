@@ -64,7 +64,6 @@ export class Borrow {
   }
 
   edit(mov: any) {
-    // console.log('✏️ Modifier le movument :', mov);
     // Naviguer vers un formulaire ou afficher une modale
     const dialogRef = this.dialog.open(AddBorrow, {
         width: '90vw', // ou '80vw' pour responsive

@@ -12,20 +12,28 @@
           <mat-option *ngFor="let m of member" [value]="m.name">{{m.name}}</mat-option   >
         </mat-select>
       </mat-form-field>
+      <button mat-button (click)="getmaxcr(doc.requester)"></button>
+
+        <mat-label style="color: red" *ngIf="doc.max">Montant Maximum : {{doc.max}}</mat-label>
 
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Montant</mat-label>
-        <input type="number" [(ngModel)]="doc.amount" matInput formControlName="amount" required/>
+        <input type="number" (input)="getDu(doc.amount)" [(ngModel)]="doc.amount" matInput formControlName="amount" required/>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>A payer</mat-label>
+        <input type="number" [(ngModel)]="doc.du" matInput formControlName="du" required/>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Date d'Emission</mat-label>
-        <input  [(ngModel)]="doc.dateE" matInput formControlName="dateE" required/>
+        <input type="date" [(ngModel)]="doc.dateE" matInput formControlName="dateE" required/>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Date de remboursement</mat-label>
-        <input  [(ngModel)]="doc.dateR" matInput formControlName="dateR" required/>
+        <input type="date" [(ngModel)]="doc.dateR" matInput formControlName="dateR" required/>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">

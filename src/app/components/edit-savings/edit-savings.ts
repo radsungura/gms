@@ -69,9 +69,11 @@ export class EditSavings {
       this.members.getAll().subscribe(mdata => {
         owner = mdata.find(m => m.name == item.owner);
         this.groupsdata.getAll().subscribe(el => {
-          group = el.find(g => g.name == owner.group) || 0;
+          group = el.find(g => g.name == owner.group);
           group.sold += item.amount;
-          this.groupsdata.update(group.id, group).subscribe();
+          console.log(group);
+          
+          this.groupsdata.update(group._id, group).subscribe();
           this.serv.create(item).subscribe((el: any) => {
             this.dialogRef.close(el); // renvoie les données modifiées
           })

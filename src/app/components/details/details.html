@@ -38,7 +38,7 @@
 		<div class="space-y-2">
 				<p><strong>Nom :</strong> {{ data.item?.owner }}</p>
 				<p><strong>Date :</strong> {{ data.item?.date }}</p>
-        		<p><strong>Periode :</strong> {{ data.item?.term }} {{data.item?.period}}</p>
+        		<p><strong>Periode :</strong> {{ data.item?.term }}</p>
 				<p><strong>Montant :</strong> {{ data.item?.amount }}</p>
 				<p><strong>Statut :</strong> {{ data.item?.status }}</p>
 		</div>
@@ -57,10 +57,12 @@
 
 		<div class="space-y-2">
 				<p><strong>Nom :</strong> {{ data.item?.requester }}</p>
+				<p><strong>Montant :</strong> {{ data.item?.amount }}</p>
+				<p *ngIf="data.item?.du > data.item?.amount"><strong>Interet :</strong> {{ data.item?.du - data.item?.amount}}</p>
+				<p><strong>A Payer :</strong> {{ data.item?.du }}</p>
+				<p><strong>Motifes :</strong> {{ data.item?.motif }}</p>
 				<p><strong>Date d'Emission :</strong> {{ data.item?.dateE }}</p>
 				<p><strong>Date de remboursement :</strong> {{ data.item?.dateR }}</p>
-				<p><strong>Montant :</strong> {{ data.item?.amount }}</p>
-				<p><strong>Motifes :</strong> {{ data.item?.motif }}</p>
 				<p><strong>Statut : </strong> {{ data.item?.status }}</p>
 		</div>
 	</mat-card>

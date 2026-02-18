@@ -22,11 +22,12 @@ export class Groups {
     return this.http.post<any>(this.api, item);
   }
 
-  delete(id: number): Observable<void> {
+  delete(id: any): Observable<void> {
     return this.http.delete<void>(`${this.api}/${id}`);
   }
 
-  update(id: any, any: any): Observable<any> {
-    return this.http.put<any>(`${this.api}/${id}`, any);
+  update(id: any, item: any): Observable<any> {
+    delete item._id;
+    return this.http.put<any>(`${this.api}/${id}`, item);
   }
 }

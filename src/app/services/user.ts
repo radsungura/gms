@@ -19,11 +19,12 @@ export class UserService {
     return this.http.post<User>(this.api, User);
   }
 
-  delete(id: number): Observable<void> {
+  delete(id: any): Observable<void> {
     return this.http.delete<void>(`${this.api}/${id}`);
   }
 
-  update(id: number, User: User): Observable<User> {
-    return this.http.put<User>(`${this.api}/${id}`, User);
+  update(id: any, item: any): Observable<User> {
+    delete item._id;
+    return this.http.put<User>(`${this.api}/${id}`, item);
   }
 }
