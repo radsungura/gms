@@ -50,14 +50,14 @@ export class Repport {
   refunds: any[] = [];
   savings: any[] = [];
   fines: any[] = [];
-  emfunds: any[] = [];
-  emexpenses: any[] = [];
-  savrep: any[] = [];
-  refrep: any[] = [];
-  finerep: any[] = [];
-  emfrep: any[] = [];
-  crerep: any[] = [];
-  emexrep: any[] = [];
+  emfunds: any[] = [0,0,0,0,0,0,0,0,0,0,0,0];
+  emexpenses: any[] = [0,0,0,0,0,0,0,0,0,0,0,0];
+  savrep: any[] = [0,0,0,0,0,0,0,0,0,0,0,0];
+  refrep: any[] = [0,0,0,0,0,0,0,0,0,0,0,0];
+  finerep: any[] = [0,0,0,0,0,0,0,0,0,0,0,0];
+  emfrep: any[] = [0,0,0,0,0,0,0,0,0,0,0,0];
+  crerep: any[] = [0,0,0,0,0,0,0,0,0,0,0,0];
+  emexrep: any[] = [0,0,0,0,0,0,0,0,0,0,0,0];
   remontot: any[] = [0,0,0,0,0,0,0,0,0,0,0,0];
   exmontot: any[] = [0,0,0,0,0,0,0,0,0,0,0,0];
   savtot: number = 0;
@@ -92,12 +92,12 @@ export class Repport {
       this.creditbyMonth(this.search.cat, this.search.value);
   }
   load(){
-    this.savrep = [];
-    this.refrep = [];
-    this.finerep = [];
-    this.emfrep = [];
-    this.crerep = [];
-    this.emexrep = [];
+    this.savrep = [0,0,0,0,0,0,0,0,0,0,0,0];
+    this.refrep = [0,0,0,0,0,0,0,0,0,0,0,0];
+    this.finerep = [0,0,0,0,0,0,0,0,0,0,0,0];
+    this.emfrep = [0,0,0,0,0,0,0,0,0,0,0,0];
+    this.crerep = [0,0,0,0,0,0,0,0,0,0,0,0];
+    this.emexrep = [0,0,0,0,0,0,0,0,0,0,0,0];
     this.remontot = [0,0,0,0,0,0,0,0,0,0,0,0];
     this.exmontot = [0,0,0,0,0,0,0,0,0,0,0,0];
     this.savtot = 0;
